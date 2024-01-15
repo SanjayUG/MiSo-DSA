@@ -1,0 +1,23 @@
+import java.util.* ;
+import java.io.*; 
+public class Solution {
+	public static int findSecondLargest(int n, int[] arr) {
+		int large = Integer.MIN_VALUE;
+		int secLarge = Integer.MIN_VALUE;
+
+		for(int i=0; i<n; i++) {
+			if(large < arr[i]) {
+				secLarge = large;
+				large = arr[i];
+			} else if (secLarge<arr[i] && large>arr[i]) {
+				secLarge = arr[i];
+			}
+		}
+
+		if(secLarge != Integer.MIN_VALUE) {
+			return secLarge;
+		} else {
+			return -1;
+		}
+	}
+}
