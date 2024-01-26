@@ -1,0 +1,10 @@
+import java.util.* ;
+import java.io.*; 
+public class Solution {
+
+	public static int minElementsToRemove(ArrayList<Integer> arr) {
+
+		return arr.size() - new HashSet<>(arr).size();
+
+}
+}
