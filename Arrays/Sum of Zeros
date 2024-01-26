@@ -1,0 +1,33 @@
+import java.util.* ;
+import java.io.*; 
+import java.util.ArrayList;
+
+public class Solution {
+
+	public static Integer coverageOfMatrix(ArrayList<ArrayList<Integer>> mat) {
+
+		int count = 0;
+		int row = mat.size();
+		int col = mat.get(0).size();
+		for(int i=0; i<row; i++) {
+			for(int j=0; j<col; j++) {
+				if(mat.get(i).get(j) == 0) {
+					if(i-1 >= 0 && mat.get(i-1).get(j) == 1) {
+						count++;
+					}
+					if(i+1 < row && mat.get(i+1).get(j) == 1) {
+						count++;
+					}
+					if(j-1 >= 0 && mat.get(i).get(j-1) == 1) {
+						count++;
+					}
+					if(j+1 < col && mat.get(i).get(j+1) == 1) {
+						count++;
+					}
+				}
+			}
+		}
+
+		return count;
+	}
+}
