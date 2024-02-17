@@ -1,0 +1,32 @@
+import java.io.*;
+import java.util.* ;
+
+// import com.sun.tools.classfile.Annotation.element_value;
+
+public class Solution {
+	public static int findMajority(int[] arr, int n) {
+		int count = 0;
+		int elem = arr[0];
+		for(int i=0; i<n; i++) {
+			if(count == 0) {
+				count++;
+				elem = arr[i];
+			} else if(elem == arr[i]) {
+				count++;
+			} else {
+				count--;
+			}
+		}
+		
+		int count1 = 0;
+		for(int i=0; i<n; i++) {
+			if(arr[i] == elem) {
+				count1++;
+			}
+		}
+		if(count1 > n / 2) {
+			return elem;
+		}
+		return -1;
+	}
+}
