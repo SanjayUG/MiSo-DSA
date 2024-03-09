@@ -1,0 +1,41 @@
+
+public class Solution {
+
+	public static void spiralPrint(int matrix[][]){
+
+		if (matrix.length == 0) {
+      		return;
+    	}
+		int startRow = 0, endRow = matrix.length - 1;
+		int startCol = 0, endCol = matrix[0].length - 1;
+		while(startRow <= endRow && startCol <= endCol) {
+			//travesing top-right
+			for(int j=startCol; j<=endCol; j++) {
+				System.out.print(matrix[startRow][j] + " ");
+			}
+			startRow++;
+
+			//travesing right-down
+			for(int i=startRow; i<=endRow; i++) {
+				System.out.print(matrix[i][endCol] + " ");
+			}
+			endCol--;
+
+			//travesing left-down
+			if(startRow <= endRow) {
+				for(int j=endCol; j>=startCol; j--) {
+				    System.out.print(matrix[endRow][j] + " ");
+				}
+				endRow--;
+			}
+
+			//travesing top-left
+			if(startCol <= endCol) {
+				for(int i=endRow; i>=startRow; i--) {
+                    System.out.print(matrix[i][startCol] + " ");
+				}
+				startCol++;
+			}
+		}
+	}
+}
