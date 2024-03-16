@@ -4,10 +4,11 @@ class Solution {
 
     static String reverseStringWordWise(String input) {
         String rev = "";
-        for(int i=input.length()-1; i>=0; i--) {
+        int i = input.length() - 1;
+        while( i >= 0) {
             if(input.charAt(i) == ' ') {
                 i--;
-            } else {
+            } else { 
                 int j = i;
                 while(j >= 0 && input.charAt(j) != ' ') {
                     j--;
