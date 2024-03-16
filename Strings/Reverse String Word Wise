@@ -1,0 +1,31 @@
+import java.util.Scanner;
+
+class Solution {
+
+    static String reverseStringWordWise(String input) {
+        String rev = "";
+        for(int i=input.length()-1; i>=0; i--) {
+            if(input.charAt(i) == ' ') {
+                i--;
+            } else {
+                int j = i;
+                while(j >= 0 && input.charAt(j) != ' ') {
+                    j--;
+                }
+                for(int k=j+1; k<=i; k++) {
+                    rev = rev + input.charAt(k);
+                }
+                rev = rev + " ";
+                i = j;
+            }
+        }
+        return rev.substring(0,rev.length() - 1);
+    }
+    
+    public static void main(String args[]) {
+        Scanner sc = new Scanner(System.in);
+        String input = sc.nextLine();
+        String ans = reverseStringWordWise(input);
+        System.out.println(ans);
+    }
+}
