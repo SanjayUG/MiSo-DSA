@@ -1,0 +1,44 @@
+import java.util.* ;
+import java.io.*; 
+public class Solution {
+	public static String nextLargestPalindrome(String number, int length) {
+		int carry;
+		boolean solved = false;
+		StringBuilder sb = new StringBuilder(number);
+		for(int i=(length+1)/2; i<length; i++) {
+			if((int)number.charAt(i) < (int)number.charAt(length - i -1)) {
+				sb.setCharAt(i, number.charAt(length - i -1));
+				for(int j=i; j<length; j++) {
+					sb.setCharAt(j, number.charAt(length - j - 1));
+				}
+				solved = true;
+				break;
+			} else if ((int)number.charAt(i) > (int)number.charAt(length - i - 1)) {
+				break;
+			}
+		}
+		if(solved) {
+		return sb.toString();
+		}
+
+		carry = 1;
+		for(int i=(length-1)/2; i>=0; i--) {
+			int sum = number.charAt(i) - '0' + carry; //or int sum = (int)number.charAt(i) + carry;
+			if(sum == 10) {
+				sb.setCharAt(i, '0');
+				carry = 1;
+			} else {
+				sb.setCharAt(i, (char) (sum + '0'));
+				carry = 0;
+				break;
+			}
+		}
+		if(carry == 1) {
+			sb.insert(0, '1');
+		}
+		for (int i = (length + 1) / 2; i < sb.length(); i++) {
+        	sb.setCharAt(i, sb.charAt(sb.length() - i - 1));
+    	}
+		return sb.toString();
+	}
+}
