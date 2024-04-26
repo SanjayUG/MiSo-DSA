@@ -1,0 +1,44 @@
+import java.util.*;
+
+
+public class Solution 
+{
+    public static char kThCharaterOfDecryptedString(String s, Long k) 
+    {
+        k--;
+        Stack<Character> st = new Stack<>();
+        int i = 0; 
+        while(i < s.length()) {
+            char ch = s.charAt(i);
+            if(ch >= 'a' && ch <= 'z') {
+                st.push(ch);
+                i++;
+                continue;
+            }
+            long sum = 0;
+            while(i < s.length()) {
+                if(s.charAt(i) >= 'a' && s.charAt(i) <= 'z') {
+                    break;
+                }
+                sum = sum * 10 + (int)(s.charAt(i) - '0');
+                i++;
+            }
+            sum = sum * st.size();
+            if(sum > k) {
+                int size = st.size();
+                String check = "";
+                while(!st.empty()) {
+                    check = st.pop() + check;
+                }
+                long val = k % size;
+                return check.charAt((int)val);
+            } else {
+                k = k - sum;
+                while(!st.empty()) {
+                    st.pop();
+                }
+            }
+        }
+        return '#'; 
+    }
+}
