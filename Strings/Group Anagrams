@@ -1,0 +1,27 @@
+import java.util.*;
+import java.io.*;
+
+public class Solution {
+
+    public static ArrayList<ArrayList<String>> getGroupedAnagrams(ArrayList<String> inputStr, int n) {
+        Map<String, List<String>> group = new HashMap<>();
+
+        for (String str : inputStr) {
+            char[] chArr = str.toCharArray();
+            Arrays.sort(chArr);
+            String sortedStr = String.valueOf(chArr);
+            if (!group.containsKey(sortedStr)) {
+                group.put(sortedStr, new ArrayList<>());
+            }
+            group.get(sortedStr).add(str);
+        }
+
+        ArrayList<ArrayList<String>> result = new ArrayList<>();
+        for (List<String> list : group.values()) {
+            result.add(new ArrayList<>(list));
+        }
+        
+        return result;
+    }
+}
+
