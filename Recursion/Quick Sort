@@ -25,7 +25,7 @@ public class Solution {
             sort(arr, pidx + 1, h);
         }
     }
-    public static List<Integer> quickSort(List<Integer> arr){
+    public static List<Integer> quickSort(List<Integer> arr) {
        sort(arr, 0, arr.size() - 1);
 
        return arr;
