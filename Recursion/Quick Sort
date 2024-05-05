@@ -1,0 +1,33 @@
+import java.util.* ;
+import java.io.*; 
+public class Solution {
+    public static int pivot(List<Integer> arr, int l, int h) {
+        int p = arr.get(h);
+        int i = l - 1;
+        for(int j=l; j<h; j++) {
+            if(arr.get(j) < p) {
+                i++;
+                int temp = arr.get(i);
+                arr.set(i, arr.get(j));
+                arr.set(j, temp) ;
+            }
+        }
+        int temp = arr.get(i + 1);
+        arr.set(i + 1, arr.get(h));
+        arr.set(h, temp);
+
+        return i + 1;
+    }
+    public static void sort(List<Integer> arr, int l, int h) {
+        if(l < h) {
+            int pidx = pivot(arr, l, h);
+            sort(arr, l, pidx - 1);
+            sort(arr, pidx + 1, h);
+        }
+    }
+    public static List<Integer> quickSort(List<Integer> arr){
+       sort(arr, 0, arr.size() - 1);
+
+       return arr;
+    }
+}
