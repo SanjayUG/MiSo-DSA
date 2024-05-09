@@ -1,0 +1,25 @@
+import java.util.ArrayList;
+
+public class Solution 
+{
+    public static void hanoi(ArrayList<ArrayList<Integer>> ans, int n, int src, int help, int dect) {
+        if(n == 0) {
+            return;
+        }
+            hanoi(ans, n - 1, src, dect, help);
+            ArrayList<Integer> temp = new ArrayList<>();
+            temp.add(src);
+            temp.add(help);
+            ans.add(temp);
+            hanoi(ans, n - 1, dect,help, src);
+    }
+    public static ArrayList<ArrayList<Integer>> towerOfHanoi(int n) 
+    {
+        ArrayList<ArrayList<Integer>> ans = new ArrayList<>();
+        int src = 1;
+        int help = 2;
+        int dect = 3;
+        hanoi(ans, n, src, help, dect);
+        return ans;
+    }
+}
