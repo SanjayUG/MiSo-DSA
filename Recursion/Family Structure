@@ -1,0 +1,30 @@
+ 	public class Solution {
+		public static String kthChildNthGeneration(int n, long k) {
+			/*recursion approch*/
+			// if(n == 1) {
+			// 	return "Male";
+			// }
+			// String parentGender = kthChildNthGeneration(n - 1, (k + 1) / 2);
+			// if(k % 2 != 0) {
+			// 	return parentGender;
+			// } 
+			// if(parentGender == "Male") {
+			// 	return "Female";
+			// } else {
+			// 	return "Male";
+			// }
+
+
+			/*looping approch*/
+			boolean isMale = true;
+			while(n > 1) {
+				if(k % 2 == 0) {
+					isMale = !isMale;
+				}
+				k = (k + 1) / 2;
+				n--;
+			}
+			return isMale ? "Male" : "Female";
+		}
+	}
+
