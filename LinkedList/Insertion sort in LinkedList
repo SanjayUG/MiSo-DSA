@@ -1,0 +1,38 @@
+import java.util.* ;
+import java.io.*; 
+/****************************************************************
+    Following is the Linked List node structure
+
+    class Node
+    {
+    public:
+        int data;
+        Node *next;
+        Node(int data)
+        {
+            this->data = data;
+            this->next = NULL;
+        }
+    };
+
+*****************************************************************/
+
+public class Solution
+{
+public static Node insertionSortLL(Node head)
+    {
+        Node sorted = new Node(-1);
+        while(head != null) {
+            Node temp = sorted;
+            Node next = head.next;
+
+            while(temp.next != null && temp.next.data < head.data) {
+                temp = temp.next;
+            }
+            head.next = temp.next;
+            temp.next = head;
+            head = next;
+        }
+        return sorted.next;
+    }
+}
