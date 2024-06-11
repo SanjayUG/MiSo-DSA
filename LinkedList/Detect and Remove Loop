@@ -1,0 +1,56 @@
+/*****************************************************
+  
+  Following is the structure of Node.
+  public static class Node {
+    
+    int data;
+    Node next;
+
+    Node(int data) {
+      this . data = data;
+      this . next = null;
+    }
+  }
+
+*****************************************************/
+
+import java.util.ArrayList;
+
+public class Solution {
+  public static Node removeLoop(Node head) {
+    if(head == null || head.next == null) {
+      return head;
+    }
+
+    Node fast = head;
+    Node slow = head;
+    Node temp = new Node(-1);
+
+    while(fast != null && fast.next != null) {
+      fast = fast.next.next;
+      slow = slow.next;
+      if(fast == slow) {
+        break;
+      }
+    }
+
+    if (slow != fast) {
+      return head;
+    }
+
+    slow = head;
+    if (slow != fast) {
+      while (slow.next != fast.next) {
+        slow = slow.next;
+        fast = fast.next;
+      }
+    } else {
+      while (fast.next != slow) {
+        fast = fast.next;
+      }
+    }
+    fast.next = null;
+
+    return head;
+  }
+}
