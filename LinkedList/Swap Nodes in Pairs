@@ -1,0 +1,37 @@
+import java.util.* ;
+import java.io.*; 
+/****************************************************************
+
+    Following is the class structure of the Node class:
+
+	class Node {
+		int data;
+		Node next;
+
+		Node(int data) {
+		this.data = data;
+		this.next = null;
+	   }
+   }
+
+*****************************************************************/
+
+public class Solution {
+	public static Node pairsSwap(Node head) {
+		Node newHead = new Node(-1);
+		newHead.next = head;
+		Node temp = newHead;
+
+		while(temp.next != null && temp.next.next != null) {
+			Node prev = temp.next;
+			Node curr = prev.next;
+
+			prev.next = curr.next;
+			curr.next = prev;
+
+			temp.next = curr;
+			temp = prev;
+		}
+		return newHead.next;
+	}
+}
