@@ -1,0 +1,49 @@
+/*************************************************************
+
+	Following is the class structure of the Node class:
+
+    class Node {
+		public int data;
+		public Node next;
+
+		Node(int data) {
+			this.data = data;
+			this.next = null;
+	  	}
+    }
+
+*************************************************************/
+
+
+public class Solution {
+	public static Node segregateOddEven(Node head) {
+		if (head == null) {
+			return null;
+		}
+
+		Node evenDummy = new Node(0);
+		Node oddDummy = new Node(0);
+		Node evenTail = evenDummy;
+		Node oddTail = oddDummy;
+		Node current = head;
+
+		while (current != null) {
+			if (current.data % 2 == 0) {
+				evenTail.next = current;
+				evenTail = evenTail.next;
+			} else {
+				oddTail.next = current;
+				oddTail = oddTail.next;
+			}
+			current = current.next;
+		}
+
+		// Terminate the even list
+		evenTail.next = null;
+
+		// Connect odd list with even list
+		oddTail.next = evenDummy.next;
+
+		return oddDummy.next != null ? oddDummy.next : evenDummy.next;
+	}
+}
