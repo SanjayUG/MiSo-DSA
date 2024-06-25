@@ -1,0 +1,22 @@
+import java.util.* ;
+import java.io.*; 
+
+public class Solution {
+
+  public static Queue<Integer> reverseQueue(Queue<Integer> q) {
+
+    Stack<Integer> st = new Stack<>();
+    Queue<Integer> rQ = new LinkedList<>();
+
+    while(!q.isEmpty()) {
+      st.push(q.remove());
+    }
+
+    while(!st.isEmpty()) {
+      rQ.add(st.pop());
+    }
+
+    return rQ;
+    
+ }
+}
