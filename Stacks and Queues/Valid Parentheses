@@ -1,0 +1,30 @@
+public class Solution {
+    public static boolean isValidParenthesis(String s) {
+        int count1 = 0;
+        int count2 = 0;
+        int count3 = 0;
+
+        for(int i=0; i<s.length(); i++) {
+            char ch = s.charAt(i);
+
+            if(ch == '(') {
+                count1++;
+            } else if(ch == '{') {
+                count2++;
+            } else if(ch == '[') {
+                count3++;
+            } else if(ch == ')') {
+                count1--;
+            } else if(ch == '}') {
+                count2--;
+            } else if(ch == ']') {
+                count3--;
+            }
+        }
+
+        if(count1 == 0 && count2 == 0 && count3 == 0) {
+            return true;
+        }
+        return false;
+    }
+}
