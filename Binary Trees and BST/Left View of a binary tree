@@ -1,0 +1,35 @@
+import java.util.*;
+
+// Define the TreeNode class
+/*
+class TreeNode<T> {
+    T data;
+    TreeNode<T> left;
+    TreeNode<T> right;
+
+    public TreeNode(T data) {
+        this.data = data;
+        this.left = null;
+        this.right = null;
+    }
+}
+*/
+
+public class Solution {
+    public static ArrayList<Integer> getLeftView(TreeNode<Integer> root) {
+        ArrayList<Integer> ans = new ArrayList<>();
+        procLeftView(root, ans, 0);
+        return ans;
+    }
+
+    private static void procLeftView(TreeNode<Integer> root, ArrayList<Integer> ans, int level) {
+        if (root == null) {
+            return;
+        }
+        if (level == ans.size()) {
+            ans.add(root.data);
+        }
+        procLeftView(root.left, ans, level + 1);
+        procLeftView(root.right, ans, level + 1);
+    }
+}
