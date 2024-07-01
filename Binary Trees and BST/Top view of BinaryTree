@@ -1,0 +1,76 @@
+/*********************************************
+
+ Following is the TreeNode class structure
+
+ class TreeNode {
+     int data;
+     TreeNode left;
+     TreeNode right;
+
+     TreeNode(int data) {
+         this.data = data;
+         this.left = null;
+         this.right = null;
+     }
+ }
+
+ *********************************************/
+
+import java.util.*;
+
+public class Solution {
+    static class Pair {
+        int hd;
+        TreeNode node;
+        Pair(int hd, TreeNode node) {
+            this.hd = hd;
+            this.node = node;
+        }
+    }
+
+    public static List<Integer> getTopView(TreeNode root) {
+        //create a list of ArrayList called ans
+        List<Integer> ans = new ArrayList<>();
+        
+        //if root is null return it
+        if(root == null) {
+            return ans;
+        }
+        
+        //create a q of Pair(horizontalHeight and Node)
+        Queue<Pair> q = new LinkedList<>();
+        //create a map of hd(key) and data(value)
+        Map<Integer, Integer> map = new TreeMap<>();
+
+        //push the root node
+        q.add(new Pair(0, root)); 
+        
+        while(!q.isEmpty()) {
+            //deque from the q
+            Pair curr = q.poll();
+            //check if map contains the hd
+            //if yes then ignore else put it in map
+            if(!map.containsKey(curr.hd)) {
+                map.put(curr.hd, curr.node.data);
+            }
+
+            //levelorder the binaryTree
+            //moving left decrease 1
+            if(curr.node.left != null) {
+                q.add(new Pair(curr.hd - 1, curr.node.left));
+            }
+            //moving right increase 1
+            if(curr.node.right != null) {
+                q.add(new Pair(curr.hd + 1, curr.node.right));
+            }
+        }
+
+        //mapTree is arranged in ascending order by default
+        //travsal it and get the value.
+        for(Map.Entry<Integer, Integer> entry: map.entrySet()) {
+            ans.add(entry.getValue());
+        }
+
+        return ans;
+    }
+}
