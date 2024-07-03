@@ -1,0 +1,52 @@
+/*********************************************************
+
+ Following is the TreeNode structure:
+
+ class TreeNode {
+     int data;
+     TreeNode left;
+     TreeNode right;
+     TreeNode() {
+         this.data = 0;
+         this.left = null;
+         this.right = null;
+     }
+     TreeNode(int data) {
+         this.data = data;
+         this.left = null;
+         this.right = null;
+     }
+     TreeNode(int data, TreeNode left, TreeNode right) {
+         this.data = data;
+         this.left = left;
+         this.right = right;
+     }
+ };
+ ********************************************************/
+
+public class Solution {
+
+    static int pindex = 0;
+    public static TreeNode buildBinaryTree(int[] inorder, int[] preorder) {
+        pindex = 0;
+        TreeNode root = buildBinaryTreeUtil(inorder, preorder, 0, inorder.length - 1);
+        return root;
+    }
+
+    public static TreeNode buildBinaryTreeUtil(int[] inorder, int[] preorder, int start, int end) {
+        if(start > end) {
+            return null;
+        }
+        TreeNode curr = new TreeNode(preorder[pindex++]);
+        
+        int iindex = start;
+        while (iindex <= end && inorder[iindex] != curr.data) {
+            iindex++;
+        }
+
+        curr.left = buildBinaryTreeUtil(inorder, preorder, start, iindex - 1);
+        curr.right = buildBinaryTreeUtil(inorder, preorder, iindex + 1, end);
+
+        return curr;
+    }
+}
