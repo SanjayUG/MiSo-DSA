@@ -1,0 +1,65 @@
+import java.util.* ;
+
+import java.io.*; 
+/************************************************************
+
+    Following is the TreeNode class structure
+
+    class TreeNode<T> 
+    {
+       public:
+        T data;
+        TreeNode<T> left;
+        TreeNode<T> right;
+
+        TreeNode(T data) 
+        {
+            this.data = data;
+            left = null;
+            right = null;
+        }
+    };
+
+************************************************************/
+public class Solution 
+{
+    static class Pair {
+        int hd;
+        TreeNode<Integer> node;
+        Pair(int hd, TreeNode<Integer> node) {
+            this.hd = hd;
+            this.node = node;
+        }
+    }
+    public static ArrayList<Integer> verticalOrderTraversal(TreeNode<Integer> root) 
+    {
+        ArrayList<Integer> ans = new ArrayList<>();
+        Queue<Pair> q = new LinkedList<>();
+        Map<Integer, ArrayList<Integer>> map = new TreeMap<>();
+
+        q.add(new Pair(0, root));
+        while(!q.isEmpty()) {
+            Pair curr = q.poll();
+            if(map.containsKey(curr.hd)) {
+                map.get(curr.hd).add(curr.node.data);
+            } else {
+                ArrayList<Integer> temp = new ArrayList<>();
+                temp.add(curr.node.data);
+                map.put(curr.hd, temp);
+            }
+
+            if(curr.node.left != null) {
+                q.add(new Pair(curr.hd - 1, curr.node.left));
+            } 
+            if(curr.node.right != null){
+                q.add(new Pair(curr.hd + 1, curr.node.right));
+            }
+        }
+
+        for(Map.Entry<Integer, ArrayList<Integer>> entry: map.entrySet()) {
+            ans.addAll(entry.getValue());
+        }
+
+        return ans;
+    }
+}
