@@ -1,0 +1,43 @@
+/*
+    Following is the TreeNode class structure:
+
+    public class TreeNode {
+        int data;
+        TreeNode left;
+        TreeNode right;
+        TreeNode() {
+            this.data = 0;
+            this.left = null;
+            this.right = null;
+        }
+        TreeNode(int val) {
+            this.data = val;
+            this.left = null;
+            this.right = null;
+        }
+        TreeNode(int val, TreeNode left, TreeNode right) {
+            this.data = val;
+            this.left = left;
+            this.right = right;
+        }
+    };
+*/
+
+import java.util.*;
+
+public class Solution {
+    public static List< Integer > getInOrderTraversal(TreeNode root) {
+        List<Integer> ans = new ArrayList<>();
+        inorder(ans, root);
+        return ans;
+    }
+
+    public static void inorder(List<Integer> ans, TreeNode root) {
+        if(root == null) {
+            return;
+        }
+        inorder(ans, root.left);
+        ans.add(root.data);
+        inorder(ans, root.right);
+    }
+}
