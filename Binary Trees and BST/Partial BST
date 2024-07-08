@@ -1,0 +1,58 @@
+import java.util.* ;
+import java.io.*; 
+/*************************************************************
+
+    Following is the Binary Tree node structure
+
+    class BinaryTreeNode<Integer> {
+        int data;
+        BinaryTreeNode<Integer> left;
+        BinaryTreeNode<Integer> right;
+
+        public BinaryTreeNode(int data) {
+            this.data = data;
+        }
+    }
+
+ *************************************************************/
+
+public class Solution {
+    // public static boolean validateBST(BinaryTreeNode<Integer> root) {
+    //     return isValidBST(root, Long.MIN_VALUE, Long.MAX_VALUE);
+    // }
+
+    // public static boolean isValidBST(BinaryTreeNode<Integer> root, long min, long max) {
+    //     if(root == null) {
+    //         return true;
+    //     }
+
+    //     if(root.data <= min || root.data >= max) {
+    //         return false;
+    //     }
+
+    //     return isValidBST(root.left, min, root.data) && isValidBST(root.right, root.data, max);
+    // }
+
+    public static boolean validateBST(BinaryTreeNode<Integer> root) {
+        List<Integer> inOrderList = new ArrayList<>();
+
+        createInorderList(root, inOrderList);
+
+        for(int i=1; i<inOrderList.size(); i++) {
+            if(inOrderList.get(i) <= inOrderList.get(i - 1)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static void createInorderList(BinaryTreeNode<Integer> root, List<Integer> inOrderList) {
+        if(root == null) {
+            return;
+        }
+
+        createInorderList(root.left, inOrderList);
+        inOrderList.add(root.data);
+        createInorderList(root.right, inOrderList);
+    }
+}
