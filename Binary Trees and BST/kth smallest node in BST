@@ -1,0 +1,51 @@
+/*********************************************************
+
+ Following is the TreeNode structure:
+
+ class TreeNode {
+     int data;
+     TreeNode left;
+     TreeNode right;
+     TreeNode() {
+         this.data = 0;
+         this.left = null;
+         this.right = null;
+     }
+     TreeNode(int data) {
+         this.data = data;
+         this.left = null;
+         this.right = null;
+     }
+     TreeNode(int data, TreeNode left, TreeNode right) {
+         this.data = data;
+         this.left = left;
+         this.right = right;
+     }
+ };
+ ********************************************************/
+
+public class Solution {
+    public static int kthSmallest(TreeNode root, int k) {
+        int[] store = new int[2];
+        store[0] = 0; //stores the count untill k
+        store[1] = -1; //stores the kth root.data
+        helper(root,k,store);
+
+        return store[1];
+    }
+    public static void helper(TreeNode root,int k, int[] store){
+        if(root==null){
+            return;
+        }
+        
+        helper(root.left,k,store);
+
+        store[0]++;
+        if(store[0]==k){
+            store[1] = root.data;
+            return;
+        }
+        
+        helper(root.right,k,store);
+    }
+}
