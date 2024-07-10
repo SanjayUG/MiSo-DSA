@@ -1,0 +1,76 @@
+/*********************************************************
+
+ Following is the TreeNode structure:
+
+ class TreeNode {
+     int data;
+     TreeNode left;
+     TreeNode right;
+     TreeNode() {
+         this.data = 0;
+         this.left = null;
+         this.right = null;
+     }
+     TreeNode(int data) {
+         this.data = data;
+         this.left = null;
+         this.right = null;
+     }
+     TreeNode(int data, TreeNode left, TreeNode right) {
+         this.data = data;
+         this.left = left;
+         this.right = right;
+     }
+ };
+ ********************************************************/
+
+import java.util.*;
+
+public class Solution {
+    public static List<Integer> predecessorSuccessor(TreeNode root, int key) {
+        List<Integer> ans = new ArrayList<>();
+        int[] pre = new int[]{-1};
+        int[] succ = new int[]{-1};
+        getPreSucc(root, key, pre, succ);
+        ans.add(pre[0]);
+        ans.add(succ[0]);
+        return ans;
+    }
+    
+    public static void getPreSucc(TreeNode root, int key, int[] pre, int[] succ) {
+        if(root == null) {
+            return;
+        }
+        //if key is found
+        if(root.data == key) {
+            //for pre move one step left and then go all the way right
+            if(root.left != null) {
+                TreeNode temp = root.left;
+                while(temp.right != null) {
+                    temp = temp.right;
+                }
+                pre[0] = temp.data;
+            }
+            //for succ move one step right and then go all the way left
+            if(root.right != null) {
+                TreeNode temp = root.right;
+                while(temp.left != null) {
+                    temp = temp.left;
+                }
+                succ[0] = temp.data;
+            }
+
+            return;
+        }
+        //if key is less than root.data
+        if(key < root.data) {
+            //store the root as succ
+            succ[0] = root.data;
+            getPreSucc(root.left, key, pre, succ);
+        } else { //if key is greater than root.data
+            pre[0] = root.data;
+            getPreSucc(root.right, key, pre, succ);
+        }
+
+    }
+}
