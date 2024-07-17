@@ -1,0 +1,26 @@
+import java.util.* ;
+import java.io.*; 
+import java.util.ArrayList;
+
+public class Solution 
+{
+	public static ArrayList<Integer> mergeKSortedArrays(ArrayList<ArrayList<Integer>> kArrays, int k)
+	{
+		ArrayList<Integer> ans=new ArrayList<>();
+        PriorityQueue<Integer>pq=new PriorityQueue<>();
+        
+		// travsel the arr[arr[]]
+		for(ArrayList<Integer> array: kArrays) {
+			for(int i: array){ //just  add arr [i]
+				pq.add(i); //minHeap
+            }
+		}
+		// remove the peek element and & add it to ans  
+        while(!pq.isEmpty()) {
+            ans.add(pq.peek());
+            pq.remove();
+        }
+
+        return ans;
+	}
+}
