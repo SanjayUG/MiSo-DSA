@@ -1,77 +1,52 @@
 import java.util.* ;
-
 import java.io.*; 
-
 public class Solution {
-
- 
-
     public static void addToAnswer(int n, int[][] visited, ArrayList<ArrayList<Integer>> ans){
-
         ArrayList<Integer> temp = new ArrayList<>();
-
         for(int i=0 ; i<n ; i++){
-
             for(int j=0 ; j<n ; j++){
-
                 temp.add(visited[i][j]);
-
             }
-
         }
-
         ans.add(temp);
-
     }
-
-
     public static boolean isSafe(int row, int col, int n, int[][] arr, int[][] visited){
         if((row>=0 && row<n) && (col>=0 && col<n) && (arr[row][col]==1 && visited[row][col]!=1)){
             return true;
         }
         return false;
     }
-
- 
-
     public static void helper(int row, int col, int n, int[][] arr, int[][] visited, ArrayList<ArrayList<Integer>> ans){
 
         // base case
-
         if(row==n-1 && col==n-1){
             visited[row][col]=1;
             addToAnswer(n,visited,ans);
-            visited[row][col]=0;
+            visited[row][col]=0; //reason for backtracking
             return ;
         }
+
         // update visited
-
         visited[row][col]=1;
-
  
         // for Down
-
         if(isSafe(row+1,col,n,arr,visited)){
             helper(row+1, col, n, arr, visited, ans);
         }
-
         // for Left
-
         if(isSafe(row, col-1, n, arr, visited)){
             helper(row, col-1, n, arr, visited, ans);
         }
-
         // for Right
-
         if(isSafe(row, col+1, n, arr, visited)){
             helper(row, col+1, n, arr, visited, ans);
         }
-
         // for Up
-
         if(isSafe(row-1, col, n, arr, visited)){
             helper(row-1, col, n, arr, visited, ans);
         }
+
+        //if nothing
         visited[row][col]=0;
     }
     public static ArrayList<ArrayList<Integer>> ratInAMaze(int[][] arr, int n) {
