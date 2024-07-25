@@ -1,0 +1,25 @@
+import java.util.* ;
+import java.io.*; 
+import java.util.ArrayList;
+
+class Solution {
+    public static ArrayList<String> subsequences(String s) {
+        ArrayList<String> ans = new ArrayList<>();
+        helper(s, 0, "", ans);
+        return ans;
+    }
+
+    public static void helper(String s, int i, String temp, ArrayList<String> ans) {
+        if(i == s.length()) {
+            if(!temp.isEmpty()) {
+                ans.add(temp);
+            }
+            return;
+        }
+
+        //take
+        helper(s, i+1, temp+=s.charAt(i), ans);
+        //not take
+        helper(s, i+1, temp=temp.substring(0, temp.length()-1), ans);
+    }
+}
