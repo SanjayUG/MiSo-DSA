@@ -1,0 +1,30 @@
+import java.util.* ;
+
+import java.io.*; 
+public class Solution {
+    public static List<String> findPermutations(String s) {
+        List<String> ans = new ArrayList<>();
+        helper(s.toCharArray(), 0, ans);
+        return ans;
+    }
+
+    //swap each char in  str
+    public static void helper(char[] s, int start, List<String> ans) {
+        if(start == s.length) {
+            ans.add(new String(s));
+            return;
+        }
+
+        for(int i=start; i<s.length; i++) {
+            swap(s, i, start);
+            helper(s, start+1, ans);
+            swap(s, i, start);
+        }
+    }
+    
+    public static void swap(char[] s, int a, int b) {
+        char temp = s[a];
+        s[a] = s[b];
+        s[b] = temp;
+    }
+}
