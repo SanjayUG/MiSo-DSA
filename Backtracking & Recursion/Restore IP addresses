@@ -1,0 +1,44 @@
+import java.util.* ;
+
+import java.io.*; 
+
+public class Solution {
+    public static List<String> generateIPAddress(String s) {
+        List<String> ans = new ArrayList<>();
+        if(s == null || s.length() < 4 || s.length() > 12) {
+            return ans;
+        }
+        helper(s, 0, new ArrayList<>(), ans);
+        Collections.sort(ans);
+        return ans;
+    }
+
+    public static void helper(String s, int i, List<String> digit, List<String> ans) {
+        if(digit.size() == 4 && i == s.length()) {
+            ans.add(String.join(".", digit));
+            return;
+        }
+        if(digit.size() == 4 || i >= s.length()) {
+            return;
+        }
+
+
+
+        for(int len=1; (len<=3) && (i+len<=s.length()); len++) {
+            String validDigit = s.substring(i, i+len);
+            if(isValid(validDigit)) {
+                digit.add(validDigit);
+                helper(s, i+len, digit, ans);
+                digit.remove(digit.size() - 1);
+            }
+        }
+    }
+
+    public static boolean isValid(String validDigit) {
+        if(validDigit.length() > 1 && validDigit.charAt(0) == '0') {
+            return false;
+        }
+        int num = Integer.parseInt(validDigit);
+        return num>=0 && num<=255;
+    }
+}
