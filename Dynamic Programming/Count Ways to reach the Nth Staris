@@ -1,0 +1,20 @@
+import java.util.* ;
+import java.io.*; 
+public class Solution {
+	public static long countDistinctWayToClimbStair(int nStairs) {
+		int mod = 1000000007;
+		if(nStairs == 0 || nStairs == 1) {
+			return 1;
+		}
+		int oneStepBack = 1;
+		int twoStepBack = 1;
+		int curr = 0;
+
+		for(int i=2; i<=nStairs; i++) {
+			curr = (oneStepBack % mod) + (twoStepBack % mod);
+			oneStepBack = twoStepBack % mod;
+			twoStepBack = curr;
+		}
+		return curr % mod;
+	}
+}
