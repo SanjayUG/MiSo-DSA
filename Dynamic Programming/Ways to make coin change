@@ -1,0 +1,25 @@
+import java.util.*;
+public class Solution {
+
+	public static long countWaysToMakeChange(int denominations[], int value) {
+        // Create a dp array to store the number of ways to make each value from 0 to value
+        long[] dp = new long[value + 1];
+        
+        // Base case: There is one way to make the value 0 (using no coins)
+        dp[0] = 1;
+
+        // Iterate through each denomination
+        for (int denom : denominations) {
+            for (int i=denom; i<=value; i++) {
+                dp[i] += dp[i - denom];
+            }
+        }
+
+        // If dp[value] is still 0, it means we cannot make change for the value
+        return dp[value];
+    }    
+}
+
+
+	
+	
