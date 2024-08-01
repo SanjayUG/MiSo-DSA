@@ -1,0 +1,46 @@
+import java.util.*;
+
+// class Pair {
+// 	int first;
+// 	int second;
+
+// 	public Pair(int first, int second) {
+// 		this.first = first;
+// 		this.second = second;
+// 	}
+// }
+
+public class Solution {
+	public static int minSteps(Pair knightPosition, Pair targetPosition, int size) {
+		Queue<Pair> positions = new LinkedList<>();
+		int moves = 0;
+		int[] dx = {2, 2, -2, -2, 1, 1, -1, -1};
+		int[] dy = {1, -1, 1, -1, 2, -2, 2, -2};
+
+		int[][] store = new int[size + 1][size + 1];
+		store[knightPosition.first][knightPosition.second] = 1;
+
+		positions.add(knightPosition);
+
+		while (!positions.isEmpty()) {
+			int currSize = positions.size();
+			for (int i = 0; i < currSize; i++) {
+				Pair currPos = positions.poll();
+				if (currPos.first == targetPosition.first && currPos.second == targetPosition.second) {
+					return moves;
+				}
+
+				for (int j = 0; j < 8; j++) {
+					int nextDx = currPos.first + dx[j];
+					int nextDy = currPos.second + dy[j];
+					if (nextDx > 0 && nextDx <= size && nextDy > 0 && nextDy <= size && store[nextDx][nextDy] == 0) {
+						store[nextDx][nextDy] = 1;
+						positions.add(new Pair(nextDx, nextDy));
+					}
+				}
+			}
+			moves++;
+		}
+		return -1; // Return -1 if the target position is unreachable
+	}
+}
