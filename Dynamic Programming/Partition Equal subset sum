@@ -1,0 +1,25 @@
+public class Solution {
+	public static boolean canPartition(int[] arr, int n) {
+        int totalSum = 0;
+        for (int num : arr) {
+            totalSum += num;
+        }  
+        // If total sum is odd, can't partition into two equal subsets
+
+        if (totalSum % 2 != 0) {
+            return false;
+        }   
+
+        int halfSum = totalSum / 2;
+        boolean[] dp = new boolean[halfSum + 1];
+        dp[0] = true;       
+
+        for (int num : arr) {
+            for (int j = halfSum; j >= num; j--) {
+                dp[j] = dp[j] || dp[j - num];
+            }
+        }      
+
+        return dp[halfSum];
+    }
+}
