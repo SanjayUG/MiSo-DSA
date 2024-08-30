@@ -1,0 +1,96 @@
+import java.util.ArrayList;
+import java.util.List;
+
+class DisjointSet {
+    List<Integer> size = new ArrayList<>();
+    List<Integer> parent = new ArrayList<>();
+
+    DisjointSet(int n) {
+        for (int i = 0; i <= n; i++) {
+            size.add(1);
+            parent.add(i);
+        }
+    }
+
+    public int findParent(int node) {
+        if (node == parent.get(node)) {
+            return node;
+        }
+
+        int tempParent = findParent(parent.get(node));
+        parent.set(node, tempParent);
+        return parent.get(node);
+    }
+
+    public void unionBySize(int u, int v) {
+        int ultimateParent_u = findParent(u);
+        int ultimateParent_v = findParent(v);
+
+        if (ultimateParent_u == ultimateParent_v) {
+            return;
+        }
+
+        if (size.get(ultimateParent_u) > size.get(ultimateParent_v)) {
+            parent.set(ultimateParent_v, ultimateParent_u);
+            size.set(ultimateParent_u, size.get(ultimateParent_u) + size.get(ultimateParent_v));
+        } else {
+            parent.set(ultimateParent_u, ultimateParent_v);
+            size.set(ultimateParent_v, size.get(ultimateParent_v) + size.get(ultimateParent_u));
+        }
+    }
+}
+
+public class Solution {
+    public static int[] numberOfIslandII(int n, int m, int[][] queries, int q) {
+        int[][] visited = new int[n][m];
+        DisjointSet ds = new DisjointSet(n * m);
+        List<Integer> res = new ArrayList<>();
+        int islandCount = 0;
+
+        for (int[] query : queries) {
+            int x = query[0];
+            int y = query[1];
+
+            if (visited[x][y] == 1) {
+                res.add(islandCount);
+                continue;
+            }
+
+            visited[x][y] = 1;
+            islandCount++;
+
+            // Check all up, down, right, left directions
+            int[] dx = {0, 1, 0, -1};
+            int[] dy = {1, 0, -1, 0};
+
+            for (int i = 0; i < 4; i++) {
+                int nx = x + dx[i];
+                int ny = y + dy[i];
+
+                if (isValid(nx, ny, n, m)) {
+                    int code = x * m + y;
+                    int ncode = nx * m + ny;
+
+                    if (visited[nx][ny] == 1 && ds.findParent(ncode) != ds.findParent(code)) {
+                        islandCount--;
+                        ds.unionBySize(code, ncode);
+                    }
+                }
+            }
+
+            res.add(islandCount);
+        }
+
+        int[] ans = new int[q];
+        for (int i = 0; i < q; i++) {
+            ans[i] = res.get(i);
+        }
+
+        return ans;
+    }
+
+    // Check if coordinates are within the grid
+    public static boolean isValid(int nx, int ny, int n, int m) {
+        return (nx >= 0) && (nx < n) && (ny >= 0) && (ny < m);
+    }
+}
