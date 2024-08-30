@@ -1,0 +1,15 @@
+import java.util.* ;
+import java.io.*; 
+import java.util.ArrayList;
+public class Solution {
+    public static boolean isGraphTree(int n, ArrayList<ArrayList<Integer>> edgeList) {
+
+        // in tree -- number of edges = number of vertex + 1
+
+        int edgeSize = edgeList.size();
+        if(edgeSize < n) {
+            return true;
+        }
+        return false;
+    }
+}
