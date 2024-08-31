@@ -1,0 +1,57 @@
+import java.util.* ;
+
+import java.io.*; 
+
+public class Solution {
+	public static class Path{
+	int x, y, cost;
+		Path(int x, int y, int cost) {
+			this.x = x;
+			this.y = y;
+			this.cost = cost;
+		}
+	}
+	public static int findShortestPath(int[][] mat, 
+					                   int sourceX, int sourceY, 
+	                                   int destX, int destY, 
+									   int n, int m) {
+
+		boolean[][] visited = new boolean[n][m]; 
+		int shortestDistance = findPath(mat, sourceX, sourceY, destX, destY, n, m, visited);
+
+		return shortestDistance;
+	}
+
+	public static int findPath(int[][] mat, int srcX, int srcY, int destX, int destY, int n, int m, boolean[][] visited) {
+		Queue<Path> q = new LinkedList<>();
+
+		// for coordinates
+		int[] dx = {-1, 0, 1, 0};
+		int[] dy = {0, 1, 0, -1};
+
+		q.add(new Path(srcX, srcY, 1));
+		visited[srcX][srcY] = true;
+
+		while(!q.isEmpty()) {
+			Path p = q.poll();
+
+			if(p.x == destX && p.y == destY && mat[p.x][p.y] == 1) {
+				return p.cost;
+			}
+
+			for(int k=0; k<4; k++) {
+				int x = p.x + dx[k];
+				int y = p.y + dy[k];
+
+				// boundery condition
+				if(x < 0 || y < 0 || x >= n || y >= m || visited[x][y] == true || mat[x][y] != 1) {
+					continue;
+				} 
+				visited[x][y] = true;
+				q.add(new Path(x, y, p.cost + 1));	
+			}
+		}
+
+		return -1;
+	}
+}
