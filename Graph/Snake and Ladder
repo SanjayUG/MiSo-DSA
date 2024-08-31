@@ -1,0 +1,63 @@
+import java.util.LinkedList;
+import java.util.Queue;
+
+public class Solution {
+
+    public static int minDiceThrowToLastCell(int[][] board) {
+        int n = board.length;
+        boolean visited[][] = new boolean[n][n];
+        Queue<Integer> q = new LinkedList<>();
+
+        q.add(1);
+        int steps = 0;
+        visited[n-1][0] = true;
+
+        while(!q.isEmpty()) {
+            int size = q.size();
+            for(int i=0; i<size; i++) {
+                int currNode = q.poll();
+
+                //check for end
+                if(currNode == n*n) {
+                    return steps;
+                }
+
+                for(int j=1; j<=6; j++) {
+                    if(j+currNode > n*n) { //if it exceeds the board
+                        break;
+                    }
+                    
+                    int position[] = findCoordinates(j+currNode, n);
+                    int row = position[0];
+                    int col = position[1];
+
+                    if(visited[row][col] == true) {
+                        continue;
+                    }
+
+                    visited[row][col] = true;
+                    if(board[row][col] == -1) {
+                        q.add(j + currNode);
+                    } else {
+                        q.add(board[row][col]);
+                    }
+                }
+            }
+            steps++;
+        }
+        return -1;
+    }
+
+    public static int[] findCoordinates(int cellNum, int n) {
+        int row = n - (cellNum - 1) / n - 1;
+        int col = (cellNum - 1) % n;
+
+        if(row % 2 == n % 2) {
+            col = n - col - 1;
+            return new int[]{row, col};
+        } else {
+            return new int[]{row, col};
+        }
+    }
+    
+}
