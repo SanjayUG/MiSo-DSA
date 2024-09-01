@@ -1,0 +1,44 @@
+import java.util.* ;
+import java.io.*; 
+public class Solution 
+{
+    public static ArrayList<Integer> topologicalSort(ArrayList<ArrayList<Integer>> edges, int v, int e) 
+    {
+        ArrayList<ArrayList<Integer>> adj = new ArrayList<>();
+        HashSet<Integer> visited = new HashSet<>();
+        ArrayList<Integer> ans = new ArrayList<>();
+
+        for(int i=0; i<v; i++) {
+            adj.add(new ArrayList<Integer>());
+        }
+
+        for(int i=0; i<e; i++) {
+            int a = edges.get(i).get(0);
+            int b = edges.get(i).get(1);
+
+            adj.get(a).add(b);
+        }
+
+        for(int i=0; i<v; i++) {
+            if(!visited.contains(i)) {
+                topology(i, adj, ans, visited);
+            }
+        }
+
+        return ans;
+    }
+
+    public static void topology(int i, ArrayList<ArrayList<Integer>> adj, ArrayList<Integer> ans, HashSet<Integer> visited) {
+        visited.add(i);
+
+        ArrayList<Integer> t = adj.get(i);
+
+        for(int j : t) {
+            if(!visited.contains(j)) {
+                topology(j, adj, ans, visited);
+            }
+        }
+
+        ans.add(0, i);
+    }
+}
