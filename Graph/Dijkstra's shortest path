@@ -1,0 +1,57 @@
+import java.util.* ;
+import java.io.*; 
+public class Solution {
+	public static class Pair{
+		int first, second;
+		Pair(int first, int second) {
+			this.first = first;
+			this.second = second;
+		}
+	}
+	
+	public static ArrayList < Integer > dijkstra(ArrayList<ArrayList<Integer>> vec, int vertices, int edges, int source){
+		ArrayList<ArrayList<Pair>> adjacencyMatrix = new ArrayList<>();
+		for(int i=0; i<vertices; i++) {
+			adjacencyMatrix.add(new ArrayList<>());
+		}
+
+		for(ArrayList<Integer> arr : vec) {
+			adjacencyMatrix.get(arr.get(0)).add(new Pair(arr.get(1), arr.get(2)));
+			adjacencyMatrix.get(arr.get(1)).add(new Pair(arr.get(0), arr.get(2)));
+		}
+
+		PriorityQueue<Pair> pq = new PriorityQueue<>((x, y) -> x.first - y.first);
+		int[] distance = new int[vertices];
+
+		for(int i=0; i<vertices; i++) {
+			distance[i] = Integer.MAX_VALUE;
+		}
+
+		distance[source] = 0;
+		pq.add(new Pair(0, source));
+
+		while(pq.size() != 0) {
+			Pair it = pq.peek();
+			int node = it.second;
+			int dist = it.first;
+			pq.remove();
+
+			for(Pair iter : adjacencyMatrix.get(node)) {
+				int adjNode = iter.first;
+				int edgeWeight = iter.second;
+
+				if(dist + edgeWeight < distance[adjNode]) {
+					distance[adjNode] = dist + edgeWeight;
+					pq.add(new Pair(dist + edgeWeight, adjNode));
+				}
+			}
+		}
+
+		ArrayList<Integer> shortestDistance = new ArrayList<>();
+		for(int i=0; i<vertices; i++) {
+			shortestDistance.add(distance[i]);
+		}
+
+		return shortestDistance;
+	}
+}
