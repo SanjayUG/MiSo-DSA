@@ -1,0 +1,62 @@
+import java.util.*;
+
+public class Solution {
+    public static class DisjointSet {
+        int[] parent;
+        int[] rank;
+
+        DisjointSet(int n) {
+            parent = new int[n + 1];
+            rank = new int[n + 1];
+            for(int i=0; i<=n; i++) {
+                parent[i] = i;
+                rank[i] = 0;
+            }
+        }
+
+        public int findParent(int node) {
+            if(parent[node] == node) {
+                return node;
+            }
+            return parent[node] = findParent(parent[node]);
+        }
+
+        public void unionByRank(int u, int v) {
+            int pu = findParent(u);
+            int pv = findParent(v);
+
+            if(pu == pv) {
+                return;
+            }
+
+            if(rank[pu] > rank[pv]) {
+                parent[pv] = pu;
+            } else if(rank[pv] > rank[pu]) {
+                parent[pu] = pv;
+            } else {
+                parent[pv] = pu;
+                rank[pu]++;
+            }
+        }
+    }
+    public static int kruskalMST(int n,int [][]edges) {
+
+        Arrays.sort(edges, Comparator.comparingInt(edge -> edge[2]));
+
+        DisjointSet ds = new DisjointSet(n);
+        int minSpanWeight = 0;
+
+        for(int[] edge : edges) {
+            int u = edge[0];
+            int v = edge[1];
+            int wt = edge[2];
+
+            if(ds.findParent(u) != ds.findParent(v)) {
+                ds.unionByRank(u, v);
+                minSpanWeight += wt;
+            }
+        }
+
+        return minSpanWeight;
+    }
+}
