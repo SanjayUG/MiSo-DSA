@@ -1,0 +1,73 @@
+import java.util.* ;
+import java.io.*; 
+import java.util.ArrayList;
+
+public class Solution 
+{
+    public static class Pair {
+        int a, b;
+        Pair(int a, int b) {
+            this.a = a;
+            this.b = b;
+        }
+    }
+    public static ArrayList<ArrayList<Integer>> calculatePrimsMST(int n, int m, ArrayList<ArrayList<Integer>> g)
+    {
+        ArrayList<ArrayList<Pair>> adj = new ArrayList<>();
+        ArrayList<ArrayList<Integer>> ans = new ArrayList<>();
+
+        int[] parent = new int[n+1];
+        int[] weight = new int[n+1];
+        boolean[] included = new boolean[n+1];
+
+        for(int i=0; i<=n; i++) {
+            parent[i] = Integer.MAX_VALUE;
+            weight[i] = Integer.MAX_VALUE;
+            adj.add(new ArrayList<Pair>());
+        }
+
+        for(ArrayList<Integer> t : g) {
+            int p = t.get(0);
+            int node = t.get(1);
+            int w = t.get(2);
+            adj.get(p).add(new Pair(node, w));
+            adj.get(node).add(new Pair(p, w));
+        }
+
+        parent[1] = -1;
+        weight[1] = 0;
+
+        for(int j=1; j<n+1; j++) {
+            int min = Integer.MAX_VALUE;
+            int node = -23232323;
+
+            for(int i=1; i<n+1; i++) {
+                if(included[i] == false && min > weight[i]) {
+                    node = i;
+                    min = weight[i];
+                }
+            }
+
+            included[node] = true;
+
+            for(Pair pr : adj.get(node)) {
+                int tn = pr.a;
+                int tw = pr.b;
+
+                if(weight[tn] > tw && included[tn] == false) {
+                    parent[tn] = node;
+                    weight[tn] = tw;
+                }
+            }
+        }
+
+        for(int i=2; i<=n; i++) {
+            ArrayList<Integer> rec = new ArrayList<>();
+            rec.add(parent[i]);
+            rec.add(i);
+            rec.add(weight[i]);
+            ans.add(rec);
+        }
+        return ans;
+    }
+}
