@@ -1,0 +1,29 @@
+import java.util.List;
+public class Solution {
+
+    public static int max = (int)Math.pow(10,8);
+
+    public static int[] bellmonFord(int n, int m, int src, List<List<Integer>> edges) {
+        int[] distance = new int[n + 1];
+
+        for(int i=0; i<n+1; i++) {
+            distance[i] = max;
+        }
+
+        distance[src] = 0;
+
+        for(int i=0; i<n-1; i++) {
+            for(List<Integer> edge : edges) {
+                int u = edge.get(0);
+                int v = edge.get(1);
+                int w = edge.get(2);
+
+                if(distance[u] + w < distance[v]) {
+                    distance[v] = distance[u] + w;
+                }
+            }
+        }
+
+        return distance;
+    }
+}
