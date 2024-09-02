@@ -1,0 +1,53 @@
+import java.util.*;
+public class Solution {
+  public static boolean detectCycleInDirectedGraph(int n, ArrayList < ArrayList < Integer >> edges) {
+    int[] indegree = new int[n+1];
+
+    List<List<Integer>> adj = findIndegreeAndAdjList(indegree, edges, n);
+    return bfs(indegree, adj, n);
+  }
+
+  public static boolean bfs(int[] indegree, List<List<Integer>> adj, int n) {
+    Queue<Integer> q = new ArrayDeque<>();
+    for(int i=1; i<=n; i++) {
+      if(indegree[i] == 0) {
+        q.add(i);
+      }
+    }
+
+    while(!q.isEmpty()) {
+      int u = q.remove();
+      for(int v : adj.get(u)) {
+        indegree[v] -= 1;
+        if(indegree[v] == 0) {
+          q.add(v);
+        }
+      }
+    }
+
+    for(int i=1; i<=n; i++) {
+      if(indegree[i] != 0) {
+        return true;
+      }
+    }
+
+    return false;
+  }
+
+  public static List<List<Integer>> findIndegreeAndAdjList(int[] indegree, ArrayList<ArrayList<Integer>> edges, int n) {
+    List<List<Integer>> adj = new ArrayList<>();
+
+    for(int i=0; i<=n; i++) {
+      adj.add(new ArrayList<>());
+    }
+
+    for(ArrayList<Integer> edge : edges) {
+      int u = edge.get(0);
+      int v = edge.get(1);
+      indegree[v] += 1;
+      adj.get(u).add(v);
+    }
+
+    return adj;
+  }
+}
