@@ -1,0 +1,61 @@
+public class Trie {
+    public static class Node {
+        Node next[] = new Node[26];
+        boolean isEnd;
+
+        Node() {
+            isEnd = false;
+            for(int i=0; i<26; i++) {
+                next[i] = null;
+            }
+        }
+    }
+    static Node root;
+    Trie() {
+        root = new Node();
+    }
+
+    public static void insert(String word) {
+        Node curr = root;
+        int n = word.length();
+        for(int i=0; i<n; i++) {
+            int index = word.charAt(i) - 'a';
+            if(curr.next[index] == null) {
+                curr.next[index] = new Node();
+            }
+            curr = curr.next[index];
+        }
+        curr.isEnd = true;
+    }
+
+    public static boolean search(String word) {
+        Node curr = root;
+        int n = word.length();
+
+        for(int i=0; i<n; i++) {
+            int index = word.charAt(i) - 'a';
+            if(curr.next[index] == null) {
+                return false;
+            }
+            curr = curr.next[index];
+        }
+
+        if(curr.isEnd) {
+            return true;
+        }
+        return false;
+    }
+
+    public static boolean startsWith(String prefix) {
+        Node curr = root;
+        int n = prefix.length();
+        for(int i=0; i<n; i++) {
+            int index = prefix.charAt(i) - 'a';
+            if(curr.next[index] == null) {
+                return false;
+            }
+            curr = curr.next[index];
+        }
+        return true;
+    }
+}
