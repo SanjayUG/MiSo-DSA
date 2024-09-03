@@ -1,0 +1,54 @@
+import java.util.ArrayList;
+
+public class Solution {
+  static int floydWarshall(int n, int m, int src, int dest, ArrayList<ArrayList<Integer>> edges) {
+    int distance[][] = new int[n+1][n+1];
+    int high = 1000000000;
+
+    for(int i=0; i<=n; i++) {
+      for(int j=0; j<=n; j++) {
+        if(i == j) {
+          distance[i][j] = 0;
+        } else {
+          distance[i][j] = high;
+        }
+      }
+    }
+
+    for(int i=0; i<m; i++) {
+      int u = edges.get(i).get(0);
+      int v = edges.get(i).get(1);
+      int wt = edges.get(i).get(2);
+
+      distance[u][v] = wt;
+    }
+
+    for(int k=1; k<=n; k++) {
+      for(int u=1; u<=n; u++) {
+        for(int v=1; v<=n; v++) {
+          if((distance[u][k] != high && distance[k][v] != high) && distance[u][k] + distance[k][v] < distance[u][v]) {
+            distance[u][v] = distance[u][k] + distance[k][v];
+          }
+        }
+      }
+    }
+
+    boolean isCycle = false;
+
+    for(int i=0; i<=n; i++) {
+      for(int j=0; j<=n; j++) {
+        if(i == j && distance[i][j] != 0) {
+          isCycle = true;
+        }
+      }
+    }
+
+    if(isCycle) {
+      return -1;
+    }
+
+    return distance[src][dest];
+
+  }
+
+}
