@@ -1,0 +1,26 @@
+import java.util.* ;
+import java.io.*; 
+import java.util.ArrayList;
+
+public class Solution 
+{
+    public static int minCashFlow(ArrayList<ArrayList<Integer>> money, int n)
+    {
+        int temp[] = new int[n];
+        for(int i=0; i<money.size(); i++) {
+            for(int j=0; j<money.get(0).size(); j++) {
+                temp[i] = temp[i] - money.get(i).get(j);
+                temp[j] = temp[j] + money.get(i).get(j);
+            }
+        }
+
+        int minCashFlow = 0;
+        for(int i=0; i<temp.length; i++) {
+            if(temp[i] < 0) {
+                minCashFlow = minCashFlow + (temp[i] * -1);
+            }
+        }
+
+        return minCashFlow;
+    }
+}
