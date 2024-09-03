@@ -1,0 +1,44 @@
+import java.util.Scanner;
+
+public class Solution {
+    public static String nextGreater(String s) {
+        char[] charArr = s.toCharArray();
+        int i = s.length() - 1;
+
+        while(i > 0) {
+            if((int)charArr[i] > (int)charArr[i-1]) {
+                break;
+            }
+            i--;
+        }
+
+        if(i == 0) {
+            return "-1";
+        }
+
+        for(int j=s.length()-1; j>=i; j--) {
+            if((int)charArr[i-1] < (int)charArr[j]) {
+                char c = charArr[j];
+                charArr[j] = charArr[i - 1];
+                charArr[i - 1] = c;
+                break;
+            }
+        }
+
+        reverse(charArr, i, s.length() - 1);
+
+        return new String(charArr);
+    }
+
+    public static void reverse(char[] ch, int i, int j) {
+        while(i < j) {
+            char c = ch[i];
+            ch[i] = ch[j];
+            ch[j] = c;
+            i++;
+            j--;
+        }
+    }
+
+
+}
