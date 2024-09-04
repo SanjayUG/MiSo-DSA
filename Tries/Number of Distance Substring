@@ -1,0 +1,39 @@
+import java.util.* ;
+import java.io.*; 
+public class Solution {
+    public static class Node {
+        Node[] next = new Node[26];
+        boolean end;
+        Node() {
+            Arrays.fill(next, null);
+            end = false;
+        }
+    }
+
+    public static class Trie {
+        Node root;
+        Trie() {
+            root = new Node();
+        }
+    }
+    public static int distinctSubstring(String word) {
+        Trie trie = new Trie();
+        int n = word.length();
+        int count = 0;
+        for(int i=0; i<n; i++) {
+            Node head = trie.root;
+            for(int j=i; j<n; j++) {
+                char ch = word.charAt(j);
+                if(head.next[ch - 'a'] == null) {
+                    head.next[ch - 'a'] = new Node();
+                    head = head.next[ch - 'a'];
+                    count++;
+                } else {
+                    head = head.next[ch - 'a'];
+                }
+            }
+        }
+
+        return count;
+    }
+}
