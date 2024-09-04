@@ -1,0 +1,44 @@
+import java.util.ArrayList;
+import java.util.HashMap;
+
+public class Solution {
+public static ArrayList<Integer> smallestSubarrayWithKDistinct(ArrayList<Integer> a, int K)
+    {
+        int n = a.size();
+        int start = 0;
+        int end = n;
+
+        HashMap<Integer, Integer> map = new HashMap<>();
+
+        int i = 0;
+        int j = 0;
+        while(j < n) {
+            map.put(a.get(j), map.getOrDefault(a.get(j), 0) + 1);
+            j++;
+
+            while(map.size() == K) {
+                if(j - i - 1 < end - start) {
+                    start = i;
+                    end = j - 1;
+                }
+
+                if(map.get(a.get(i)) == 1) {
+                    map.remove(a.get(i));
+                } else {
+                    map.put(a.get(i), map.get(a.get(i)) - 1);
+                }
+                i++;
+            }
+        }
+
+        ArrayList<Integer> ans = new ArrayList<>();
+        if(end == n) {
+            ans.add(-1);
+        } else {
+            ans.add(start);
+            ans.add(end);
+        }
+
+        return ans;
+    }
+}
