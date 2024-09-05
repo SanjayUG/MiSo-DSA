@@ -1,0 +1,25 @@
+import java.util.* ;
+import java.io.*; 
+public class Solution 
+{
+	public static int uniqueSubstrings(String input) 
+    {
+		int n = input.length();;
+		int length = 0;
+		int maxCount = 0;
+
+		HashMap<Character, Integer> map = new HashMap<>();
+		
+		for(int i=0; i<n; i++) {
+			char ch = input.charAt(i);
+			
+			if(map.containsKey(ch)) {
+				length = Math.max(length, map.get(ch) + 1);
+			}
+			map.put(ch, i);
+			maxCount = Math.max(maxCount, i - length + 1);
+		}
+
+		return maxCount;
+	}
+}
