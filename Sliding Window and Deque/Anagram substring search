@@ -1,0 +1,39 @@
+import java.util.* ;
+import java.io.*; 
+public class Solution {
+	public static ArrayList<Integer> findAnagramsIndices(String str, String ptn, int n, int m) {
+		ArrayList<Integer> result = new ArrayList<>();
+		int ptnFreq[] = new int[26];
+		for(char c : ptn.toCharArray()) {
+			ptnFreq[c - 'A']++;
+		}
+		int windowFreq[] = new int[26];
+		for(int i=0; i<m; i++) {
+			windowFreq[str.charAt(i) - 'A']++;
+		}
+
+		if(isAnagram(ptnFreq, windowFreq)) {
+			result.add(0);
+		}
+
+		for(int i=m; i<n; i++) {
+			windowFreq[str.charAt(i - m) - 'A']--;
+			windowFreq[str.charAt(i) - 'A']++;
+
+			if(isAnagram(ptnFreq, windowFreq)) {
+				result.add(i - m + 1);
+			}
+		}
+
+		return result;
+	}
+
+	private static boolean isAnagram(int[] ptnFreq, int[] windowFreq) {
+		for(int i=0; i<26; i++) {
+			if(ptnFreq[i] != windowFreq[i]) {
+				return false;
+			}
+		}
+		return true;
+	}
+}
