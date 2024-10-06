@@ -1,0 +1,66 @@
+import java.util.* ;
+import java.io.*; 
+/***************************************************************************
+
+  Class for graph node is as follows:
+
+  class graphNode {
+      public int data;
+      public ArrayList<graphNode> neighbours;
+
+      graphNode() {
+          data = 0;
+          neighbours = new ArrayList<graphNode>();
+      }
+
+      graphNode(int val) {
+          data = val;
+          neighbours = new ArrayList<graphNode>();
+      }
+
+      graphNode(int val, ArrayList<graphNode> neighbours) {
+          data = val;
+          this.neighbours = neighbours;
+      }
+    }
+
+******************************************************************************/
+
+public class Solution {
+    public static graphNode cloneGraph(graphNode node) {
+        if(node == null) {
+            return node;
+        }
+
+        // created a new node
+        graphNode newNode = new graphNode(node.data);
+
+        // put the node and newNode in a map 
+        Map<graphNode, graphNode> map = new HashMap<>();
+        map.put(node, newNode);
+
+        cloneGraphUtil(node, newNode, map);
+
+        return newNode;
+    }
+
+    public static void cloneGraphUtil(graphNode oldNode, graphNode newNode, Map<graphNode, graphNode> map) {
+        for(graphNode currNode : oldNode.neighbours) {
+            // if map don't contains currNode then create new node of data and insert it in newNode's neighbour
+            if(!map.containsKey(currNode)) {
+                // graphNode node = new graphNode(currNode.data);
+
+                // newNode.neighbours.add(node);
+                // map.put(currNode, node);
+                // cloneGraphUtil(currNode, newNode, map);
+                
+                
+                newNode.neighbours.add(new graphNode(currNode.data));
+                map.put(currNode, newNode);
+                cloneGraphUtil(currNode, newNode, map);
+            } else {
+                newNode.neighbours.add(map.get(currNode));
+            }
+        }
+    }
+}
