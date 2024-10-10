@@ -1,0 +1,43 @@
+
+/*
+
+    Following is the Node class already written for the Linked List
+
+    class Node<T> {
+        T data;
+        Node<T> next;
+    
+        public Node(T data) {
+            this.data = data;
+        }
+    }
+
+*/
+
+public class Solution {
+    
+    public static Node<Integer> mergeTwoSorteds(Node<Integer> head1, Node<Integer> head2) {
+        Node<Integer> dummy = new Node<>(-1);
+        Node<Integer> curr = dummy;
+
+        while(head1 != null && head2 != null) {
+            if(head1.data <= head2.data) {
+                curr.next = head1;
+                head1 = head1.next;
+            } else {
+                curr.next = head2;
+                head2 = head2.next;
+            }
+            curr = curr.next;
+        }
+
+        if(head1 == null) {
+            curr.next = head2;
+        } else {
+            curr.next = head1;
+        }
+
+        return dummy.next;
+    }
+
+}
