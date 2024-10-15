@@ -1,0 +1,30 @@
+import java.util.*;
+import java.io.*;
+
+public class Solution {
+    public static int longestAP(ArrayList<Integer> arr, int n) {
+        if (n <= 1) {
+			return 0;
+		}
+
+        int maxLength = 2;
+        HashMap<Integer, Integer>[] dp = new HashMap[n];
+
+        for (int i = 0; i < n; i++) {
+            dp[i] = new HashMap<>();
+            for (int j = 0; j < i; j++) {
+                int diff = arr.get(i) - arr.get(j);
+                if (dp[j].containsKey(diff)) {
+                    dp[i].put(diff, dp[j].get(diff) + 1);
+                } else {
+                    dp[i].put(diff, 2);
+                }
+                maxLength = Math.max(maxLength, dp[i].get(diff));
+            }
+        }
+
+        return maxLength;
+    }
+
+    
+}
