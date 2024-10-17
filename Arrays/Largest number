@@ -1,0 +1,24 @@
+import java.util.*;
+public class Solution {
+
+	public static int largestNumber(int[] arr, int n) {
+	
+		Arrays.sort(arr);
+
+		int start = 0;
+		int end = n - 1;
+
+		while(start < end) {
+			if(-arr[start] == arr[end]) {
+				return arr[end];
+			} else if(-arr[start] > arr[end]) {
+				start++;
+			} else {
+				end--;
+			}
+		}
+
+		return -1;
+	}
+
+}
