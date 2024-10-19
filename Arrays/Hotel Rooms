@@ -1,0 +1,27 @@
+import java.util.*;
+
+public class Solution {
+    static String maxRoomBooked(ArrayList<String> arr, int n) {
+        HashMap<String, Integer> bookingCount = new HashMap<>();
+        String maxBookedRoom = "";
+        int maxBookings = 0;
+
+        for (String action : arr) {
+            String room = action.substring(1); // Extract room number (skip the '+' or '-')
+            
+            if (action.charAt(0) == '+') {
+                bookingCount.put(room, bookingCount.getOrDefault(room, 0) + 1);
+                
+                int currentBookings = bookingCount.get(room);
+                
+                if (currentBookings > maxBookings || 
+                    (currentBookings == maxBookings && room.compareTo(maxBookedRoom) < 0)) {
+                    maxBookedRoom = room;
+                    maxBookings = currentBookings;
+                }
+            }
+        }
+
+        return maxBookedRoom;
+    }
+}
