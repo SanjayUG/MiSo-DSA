@@ -1,0 +1,58 @@
+import java.util.*;
+
+public class Solution {
+
+	public static class Pair {
+		int i, j;
+		public Pair(int i, int j) {
+			this.i = i;
+			this.j = j;
+		}
+	}
+
+	    public static int minTimeToRot(int[][] grid, int n, int m) {
+        Queue<Pair> q = new LinkedList<>();
+        int freshOrange = 0;
+        int time = 0;
+
+        // Initialize the queue with all rotten oranges
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                if (grid[i][j] == 2) {
+                    q.add(new Pair(i, j));
+                }
+                if (grid[i][j] == 1) {
+                    freshOrange++;
+                }
+            }
+        }
+
+        // Directions array for 4-directional movement
+        int[] dx = {-1, 1, 0, 0};  // top down left right
+        int[] dy = {0, 0, -1, 1};
+
+        // BFS process
+        while (!q.isEmpty() && freshOrange > 0) {
+            int size = q.size();
+            for (int i = 0; i < size; i++) {
+                Pair p = q.poll();
+                for (int d = 0; d < 4; d++) {
+                    int newRow = p.i + dx[d];
+                    int newCol = p.j + dy[d];
+
+                    // Check boundaries and if the cell is a fresh orange
+                    if (newRow >= 0 && newRow < n && newCol >= 0 && newCol < m && grid[newRow][newCol] == 1) {
+                        grid[newRow][newCol] = 2;
+                        q.add(new Pair(newRow, newCol));
+                        freshOrange--;
+                    }
+                }
+            }
+            time++;
+        }
+
+        return (freshOrange == 0) ? time : -1;
+    }
+
+
+}
