@@ -1,0 +1,64 @@
+import java.util.* ;
+import java.io.*; 
+/****************************************************
+class BinaryTreeNode<T> {
+	T data;
+	BinaryTreeNode<T> left;
+	BinaryTreeNode<T> right;
+
+	public BinaryTreeNode(T data) {
+		this.data = data;
+	}
+}
+
+*****************************************************/
+public class Solution 
+{
+	public static int findMaxDepth(BinaryTreeNode<Integer> root) 
+	{
+		// if(root == null) {
+		// 	return 0;
+		// }
+
+		// int leftDepth = findMaxDepth(root.left);
+		// int rightDepth = findMaxDepth(root.right);
+
+		// int depth = Math.max(leftDepth, rightDepth);
+
+		// return depth + 1;
+
+		// --------------------------
+
+
+		if(root == null) {
+			return 0;
+		}
+
+		Queue<BinaryTreeNode> q = new LinkedList<>();
+		q.add(root);
+		int depth = 0;
+
+		while(true) {
+			int currDepth = q.size();
+
+			if(currDepth == 0) {
+				return depth;
+			}
+
+			while(currDepth > 0) {
+				BinaryTreeNode node = q.poll();
+
+				if(node.left != null) {
+					q.add(node.left);
+				}
+				if(node.right != null) {
+					q.add(node.right);
+				}
+
+				currDepth--;
+			}
+
+			depth++;
+		}
+	}
+}
