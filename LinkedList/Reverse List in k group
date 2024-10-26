@@ -1,0 +1,72 @@
+import java.util.*;
+
+/****************************************************************
+
+ Following is the class structure of the Node class:
+
+ class Node {
+     public int data;
+     public Node next;
+
+     Node()
+     {
+         this.data = 0;
+         this.next = null;
+     }
+
+     Node(int data)
+     {
+         this.data = data;
+         this.next = null;
+     }
+
+     Node(int data, Node next)
+     {
+         this.data = data;
+         this.next = next;
+     }
+ };
+
+ *****************************************************************/
+
+public class Solution {
+    public static Node kReverse(Node head, int k) {
+        if (head == null || k == 1) return head;
+
+        Node dummy = new Node(0, head);
+        Node prevBlockEnd = dummy;
+        Node curr = head;
+
+        while (curr != null) {
+            Node blockStart = curr;
+            int count = 0;
+
+            // Find the k-th node
+            while (count < k && curr != null) {
+                curr = curr.next;
+                count++;
+            }
+
+            // If fewer than k nodes remain, no need to reverse
+            if (count == k) {
+                // Reverse k nodes
+                Node prev = null;
+                Node next = null;
+                Node tempCurr = blockStart;
+                while (count-- > 0) {
+                    next = tempCurr.next;
+                    tempCurr.next = prev;
+                    prev = tempCurr;
+                    tempCurr = next;
+                }
+
+                // Connect with the previous part
+                prevBlockEnd.next = prev;
+                blockStart.next = curr;
+                prevBlockEnd = blockStart;
+            }
+        }
+
+        return dummy.next;
+    }
+}
