@@ -1,0 +1,51 @@
+/*****************************************************************
+
+    Following is the class structure of the LinkedListNode class:
+	
+    class LinkedListNode {
+	int data;
+	LinkedListNode next;
+
+	LinkedListNode(int data) {
+		this.data = data;
+		this.next = null;
+	   }
+	}
+
+*****************************************************************/
+
+
+public class Solution {
+    public static LinkedListNode partitionList(LinkedListNode head, int k) {
+        if(head == null) {
+			return null;
+		}
+		
+		// Create dummy heads for two lists
+        LinkedListNode lessThanHead = new LinkedListNode(0);
+        LinkedListNode greaterThanHead = new LinkedListNode(0);
+
+        LinkedListNode less = lessThanHead;
+        LinkedListNode greater = greaterThanHead;
+
+        LinkedListNode curr = head;
+
+        while (curr != null) {
+            if (curr.data < k) {
+                less.next = curr;
+                less = less.next;
+            } else {
+                greater.next = curr;
+                greater = greater.next;
+            }
+            curr = curr.next;
+        }
+
+        // Connect the two lists
+        greater.next = null; // End of greater list
+        less.next = greaterThanHead.next; // Join less list with greater list
+
+        return lessThanHead.next; // Skip the dummy head
+    }
+}
+
