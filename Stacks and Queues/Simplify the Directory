@@ -1,0 +1,35 @@
+import java.util.*;
+
+public class Solution {
+    public static String simplifyDirectory(String path) {
+        Stack<String> stack = new Stack<>();
+
+        // Split the path by "/"
+        String[] components = path.split("/");
+
+        for (String directory : components) {
+            // Skip any empty components or "."
+            if (directory.equals("") || directory.equals(".")) {
+                continue;
+            }
+            // ".." means to pop the stack if not empty
+            if (directory.equals("..")) {
+                if (!stack.isEmpty()) {
+                    stack.pop();
+                }
+            } else {
+                // Otherwise, add the directory to the stack
+                stack.push(directory);
+            }
+        }
+
+        // Construct the result from the stack
+        String result = "";
+        for (String dir : stack) {
+            result += "/" + dir;
+        }
+
+        return result.isEmpty() ? "/" : result;
+    }
+
+}
