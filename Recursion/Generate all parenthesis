@@ -1,0 +1,23 @@
+import java.util.*; 
+import java.io.*;
+
+public class Solution {    
+    public static void util(int n, int open, int close, ArrayList<String> ans, String str) {        
+        if (str.length() == 2 * n) {            
+            ans.add(str);            
+            return;        
+        }        
+        if (open < n) {            
+            util(n, open + 1, close, ans, str + "(");        
+        }        
+        if (close < open) {            
+            util(n, open, close + 1, ans, str + ")");        
+        }    
+    }    
+
+    public static ArrayList<String> validParenthesis(int n) {                
+        ArrayList<String> ans = new ArrayList<>();        
+        util(n, 0, 0, ans, "");        
+        return ans;    
+    } 
+}
