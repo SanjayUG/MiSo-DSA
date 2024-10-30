@@ -1,0 +1,93 @@
+import java.util.*;
+
+public class LRUCache
+{
+
+    class Node {
+        Node prev, next;
+        int key;
+        public Node(int k) {
+            key = k;
+        }
+    }
+    
+    int size;
+    Node least, recent;
+    HashMap<Integer, Integer> map;
+    HashMap<Integer, Node> nodeMap;
+
+    LRUCache(int capacity)
+    {
+        size = capacity;
+        least = null;
+        recent = null;
+        map = new HashMap<>();
+        nodeMap = new HashMap<>();
+    }
+
+    public int get(int key)
+    {
+        if(map.containsKey(key)) {
+            updateTheCache(key);
+            return map.get(key);
+        }
+        return -1;
+    }
+
+    public void put(int key, int value)
+    {
+        if(!map.containsKey(key) && map.size() >= size) {
+            map.remove(least.key);
+            nodeMap.remove(least.key);
+            map.put(key, value);
+            Node n = new Node(key);
+            nodeMap.put(key, n);
+            if(least == recent) {
+                least = n;
+                recent = n;
+            } else {
+                least = least.next;
+                least.prev = null;
+                recent.next = n;
+                n.prev = recent;
+                recent = n;
+            }
+        } else if(map.containsKey(key)) {
+            updateTheCache(key);
+            map.put(key, value);
+        } else {
+            map.put(key, value);
+            Node n =new Node(key);
+            nodeMap.put(key, n);
+            if(least == null) {
+                least = recent = n;
+            } else {
+                recent.next = n;
+                n.prev = recent;
+                recent = n;
+            }
+        }
+    }
+
+    public void updateTheCache(int key) {
+        if(least == recent) {
+            return;
+        } else {
+            Node temp = nodeMap.get(key);
+            if(least != temp && recent != temp) {
+                temp.prev.next = temp.next;
+                temp.next.prev = temp.prev;
+                recent.next = temp;
+                temp.prev = recent;
+                recent = temp;
+            } else if(least == temp) {
+                least = least.next;
+                least.prev = null;
+                recent.next = temp;
+                temp.prev = recent;
+                recent = temp;
+            }
+        }
+    }
+}
+ 
