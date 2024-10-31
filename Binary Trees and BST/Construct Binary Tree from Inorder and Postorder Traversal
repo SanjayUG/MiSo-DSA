@@ -1,0 +1,46 @@
+import java.util.*;
+
+/*******************************************************
+ Following is the TreeNode class structure
+
+ class TreeNode<T> {
+     T data;
+     TreeNode<T> left;
+     TreeNode<T> right;
+
+     public TreeNode(T x) {
+         this.data = x;
+         this.left = null;
+         this.right = null;
+     }
+ };
+ *******************************************************/
+
+// public class Solution {
+//     private static TreeNode<Integer> buildTreeHelper(int[] postOrder, int postStart, int postEnd, int[] inOrder, int inStart, int inEnd, HashMap<Integer, Integer> inOrderMap) {
+//         if (postStart > postEnd || inStart > inEnd) {
+//             return null;
+//         }
+
+//         int rootVal = postOrder[postEnd];
+//         TreeNode<Integer> root = new TreeNode<>(rootVal);
+
+//         int inIndex = inOrderMap.get(rootVal);
+//         int numsLeft = inIndex - inStart;
+
+//         root.left = buildTreeHelper(postOrder, postStart, postStart + numsLeft - 1, inOrder, inStart, inIndex - 1, inOrderMap);
+//         root.right = buildTreeHelper(postOrder, postStart + numsLeft, postEnd - 1, inOrder, inIndex + 1, inEnd, inOrderMap);
+
+//         return root;
+//     }
+
+//     public static TreeNode<Integer> getTreeFromPostorderAndInorder(int[] postOrder, int[] inOrder) {
+//         int n = postOrder.length;
+//         HashMap<Integer, Integer> inOrderMap = new HashMap<>();
+//         for (int i = 0; i < inOrder.length; i++) {
+//             inOrderMap.put(inOrder[i], i);
+//         }
+//         return buildTreeHelper(postOrder, 0, n - 1, inOrder, 0, n - 1, inOrderMap);
+
+//     }
+// }
