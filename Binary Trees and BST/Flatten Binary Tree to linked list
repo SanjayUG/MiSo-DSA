@@ -1,0 +1,86 @@
+import java.util.* ;
+
+/************************************************************
+
+    Following is the TreeNode class structure.
+
+	class TreeNode<T> 
+	{
+	    public T data;
+	    public TreeNode<T> left;
+	    public TreeNode<T> right;
+
+	    TreeNode(T data) 
+	    {
+	        this.data = data;
+	        left = null;
+	        right = null;
+	    }
+	}
+
+************************************************************/
+
+public class Solution {    
+    
+	/*
+	public static TreeNode<Integer> flattenBinaryTree(TreeNode<Integer> root) {        
+        if (root == null) {            
+            return root;        
+        }
+
+        // Save the original right subtree
+        TreeNode<Integer> temp = root.right;
+        
+        // If there's a left subtree, flatten it and attach to the right
+        if (root.left != null) {            
+            root.right = flattenBinaryTree(root.left);            
+            root.left = null;
+            
+            // Move to the rightmost node of the new right subtree
+            TreeNode<Integer> current = root;
+            while (current.right != null) {                
+                current = current.right;            
+            }
+            
+            // Attach the original right subtree to the rightmost node
+            current.right = flattenBinaryTree(temp);        
+        } else {            
+            // If there's no left subtree, just continue with the right subtree
+            root.right = flattenBinaryTree(temp);        
+        }
+        
+        return root;    
+    }
+
+	*/
+
+	public static TreeNode<Integer> flattenBinaryTree(TreeNode<Integer> root) {        
+        if (root == null) {            
+            return root;        
+        }
+
+        TreeNode<Integer> current = root;
+
+        while (current != null) {
+            if (current.left != null) {
+                // Find the rightmost node in the left subtree
+                TreeNode<Integer> rightmost = current.left;
+                while (rightmost.right != null) {
+                    rightmost = rightmost.right;
+                }
+
+                // Connect the right subtree of the current node to the rightmost node
+                rightmost.right = current.right;
+
+                // Move the left subtree to the right
+                current.right = current.left;
+                current.left = null;
+            }
+
+            // Move on to the right side of the tree
+            current = current.right;
+        }  
+
+		return root;  
+    }
+}
