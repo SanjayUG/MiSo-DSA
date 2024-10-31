@@ -1,0 +1,24 @@
+import java.util.ArrayList;
+import java.util.List;
+public class Solution {
+    public static List<List<Integer>> FindAllSubsets(int []arr) {
+        List<Integer> temp = new ArrayList<>();
+        List<List<Integer>> ans = new ArrayList<>();
+
+        util(arr, 0, temp, ans);
+        return ans;
+    }
+
+    public static void util(int[] arr, int i, List<Integer> temp, List<List<Integer>> ans) {
+        if(i == arr.length) {
+            ans.add(new ArrayList<>(temp));
+            return;
+        }
+
+        temp.add(arr[i]);
+
+        util(arr, i+1, temp, ans);
+        temp.remove(temp.size() - 1);
+        util(arr, i+1, temp, ans);
+    }
+}
