@@ -1,0 +1,56 @@
+import java.util.*;
+
+public class Solution {
+
+    public static void solveSudoku(int[][] sudoku) {
+        isPossibleSolution(sudoku, 0, 0);
+    }
+
+    private static boolean isPossibleSolution(int[][] sudoku, int row, int col) {
+        if (row == 9) {
+            return true;
+        }
+
+        int nextRow = row + (col + 1) / 9;
+        int nextCol = (col + 1) % 9;
+
+        if (sudoku[row][col] != 0) {
+            return isPossibleSolution(sudoku, nextRow, nextCol);
+        }
+
+        for (int digit = 1; digit <= 9; digit++) {
+            if (isSafe(sudoku, row, col, digit)) {
+                sudoku[row][col] = digit;
+                if (isPossibleSolution(sudoku, nextRow, nextCol)) {
+                    return true;
+                }
+                sudoku[row][col] = 0;
+            }
+        }
+
+        return false;
+    }
+
+    private static boolean isSafe(int[][] sudoku, int row, int col, int digit) {
+        // Check row
+        for (int c = 0; c < 9; c++) {
+            if (sudoku[row][c] == digit) return false;
+        }
+
+        // Check column
+        for (int r = 0; r < 9; r++) {
+            if (sudoku[r][col] == digit) return false;
+        }
+
+        // Check 3x3 subgrid
+        int startRow = (row / 3) * 3;
+        int startCol = (col / 3) * 3;
+        for (int r = startRow; r < startRow + 3; r++) {
+            for (int c = startCol; c < startCol + 3; c++) {
+                if (sudoku[r][c] == digit) return false;
+            }
+        }
+
+        return true;
+    }
+}
