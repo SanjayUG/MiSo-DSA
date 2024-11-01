@@ -1,0 +1,40 @@
+import java.util.*;
+
+public class Solution {
+  public static class Pair {
+    String word;
+    int count;
+    Pair(String word, int count) {
+      this.word = word;
+      this.count = count;
+    }
+  }
+  public static int wordLadder(String begin, String end, ArrayList < String > dict) {
+    HashSet<String> set = new HashSet<>(dict);
+    Queue<Pair> q = new LinkedList<>();
+    q.add(new Pair(begin, 1));
+    set.remove(begin);
+    
+    while (!q.isEmpty()) {
+      String word = q.peek().word;
+      int count = q.peek().count;
+      q.remove();
+      if(word.equals(end)) {
+        return count;
+      }
+      for (int i = 0; i < word.length(); i++) {
+        for (char ch = 'a'; ch <= 'z'; ch++) {
+          char[] charArr = word.toCharArray();
+          charArr[i] = ch;
+          String newWord = new String(charArr);
+          if(set.contains(newWord)) {
+            set.remove(newWord);
+            q.add(new Pair(newWord, count+1));
+          }
+        }
+      }
+    }
+    
+    return -1;
+  }
+}
