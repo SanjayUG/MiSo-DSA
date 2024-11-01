@@ -1,0 +1,37 @@
+import java.util.*; 
+
+/*************************************************************************
+'t' is the time at which the meeting ends.
+'start' is a vector denoting the start time of the ith presentation.
+'end' is a vector denoting the end time of the ith presentation.
+'k' is the maximum number of presentations that can be rescheduled.
+*************************************************************************/
+
+public class Solution {
+    public static int maxInterval(int t, ArrayList<Integer> start, ArrayList<Integer> end, int k) {
+        // Calculate empty slots between presentations
+        ArrayList<Integer> emptySlot = new ArrayList<>();
+        int prevEnd = 0;
+        for (int i = 0; i < start.size(); i++) {
+            emptySlot.add(start.get(i) - prevEnd);
+            prevEnd = end.get(i);
+        }
+        emptySlot.add(t - prevEnd); // Time from last presentation end to meeting end
+
+        // Using sliding window to find the maximum sum of k+1 intervals
+        int n = emptySlot.size();
+        int maxSum = 0;
+        int currentSum = 0;
+        
+        for (int i = 0; i < n; i++) {
+            if (i < k + 1) {
+                currentSum += emptySlot.get(i);
+            } else {
+                currentSum += emptySlot.get(i) - emptySlot.get(i - (k + 1));
+            }
+            maxSum = Math.max(maxSum, currentSum);
+        }
+
+        return maxSum;
+    }
+}
