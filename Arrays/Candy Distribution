@@ -1,0 +1,43 @@
+import java.util.*;
+
+public class Solution {
+    // static long candyDistribution(int n, ArrayList<Integer> a) {
+    //     // Use a HashSet for fast look-up
+    //     HashSet<Integer> usedCandies = new HashSet<>();
+    //     Collections.sort(a);
+    //     long sum = 0;
+        
+    //     for (int i = 0; i < n; i++) {
+    //         int candies = a.get(i);
+    //         // Increment candies until we find an unused value
+    //         while (usedCandies.contains(candies)) {
+    //             candies++;
+    //         }
+    //         // Add the new candy count to the set and update sum
+    //         usedCandies.add(candies);
+    //         sum += candies;
+    //     }
+        
+    //     return sum;
+    // }
+
+
+    static long candyDistribution(int n, ArrayList<Integer> a) {
+       Collections.sort(a);
+          long ans=0,prev=0;
+        
+        for(int i=0;i<a.size();i++){
+            // Storing the previous will tell whether the current element is greater or not
+            // if greater just add it to ans
+            // if equal jus increase prev by 1 and then add it
+            if(a.get(i)>prev){
+                prev=a.get(i);
+            }else{
+                prev++;             
+            }
+            ans+=prev;
+        }
+        return ans;
+    }
+    
+}
