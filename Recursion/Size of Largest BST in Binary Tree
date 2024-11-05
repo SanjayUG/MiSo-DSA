@@ -1,0 +1,60 @@
+/*********************************************************
+
+Following is the TreeNode structure:
+
+class TreeNode {
+    int data;
+    TreeNode left;
+    TreeNode right;
+    BinaryTreeNode() {
+        this.data = 0;
+        this.left = null;
+        this.right = null;
+    }
+    BinaryTreeNode(int data) {
+        this.data = data;
+        this.left = null;
+        this.right = null;
+    }
+    BinaryTreeNode(int data, TreeNode left, TreeNode right) {
+        this.data = data;
+        this.left = left;
+        this.right = right;
+    }
+};
+********************************************************/
+
+public class Solution {
+    static class Info {
+        int size;
+        int max;
+        int min;
+        boolean isBST;
+
+        Info(int s, int max, int min, boolean isBST) {
+            this.size = s;
+            this.max = max;
+            this.min = min;
+            this.isBST = isBST;
+        }
+    }
+
+    public static int largestBST(TreeNode root) {
+        return util(root).size;
+    }
+
+    public static Info util(TreeNode root) {
+        if (root == null) {
+            return new Info(0, Integer.MIN_VALUE, Integer.MAX_VALUE, true);
+        }
+
+        Info left = util(root.left);
+        Info right = util(root.right);
+
+        if (left.isBST && right.isBST && root.data > left.max && root.data < right.min) {
+            return new Info(left.size + right.size + 1, Math.max(root.data, right.max), Math.min(root.data, left.min), true);
+        }
+
+        return new Info(Math.max(left.size, right.size), 0, 0, false);
+    }
+}
