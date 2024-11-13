@@ -1,0 +1,21 @@
+import java.util.HashMap;
+
+public class Solution {
+
+	public static int pickCoupons(int n, int[] coupons) {
+	 	
+		HashMap<Integer, Integer> map = new HashMap<>();
+		int minSubLen = Integer.MAX_VALUE;
+
+		for(int i=0; i<coupons.length; i++) {
+			if(map.containsKey(coupons[i])) {
+				minSubLen = Math.min(minSubLen, i - map.get(coupons[i]));
+			}
+
+			map.put(coupons[i], i);
+		}
+		
+		return minSubLen == Integer.MAX_VALUE ? -1 : minSubLen + 1;
+	}
+
+}
