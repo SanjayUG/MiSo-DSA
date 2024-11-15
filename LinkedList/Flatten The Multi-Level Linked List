@@ -1,0 +1,50 @@
+import java.util.* ;
+
+/*******************************************************
+
+	Following is the Node class structure
+
+	class Node {
+	    int data;
+	    Node next;
+	    Node child;
+	    
+	    public Node(int data) {
+	        this.data = data;
+	    }
+	}
+
+*******************************************************/
+
+public class Solution {
+    
+    public static Node flattenMultiLinkedList(Node head) {
+        if(head == null) {
+			return null;
+		}
+
+		Node dummy = new Node(0);
+		Node curr = dummy;
+
+		Stack<Node> st = new Stack<>();
+		st.push(head);
+
+		while(!st.isEmpty()) {
+			Node temp = st.pop();
+			curr.next = temp;
+			curr = curr.next;
+
+			if(temp.next != null) {
+				st.push(temp.next);
+			}
+
+			if(temp.child != null) {
+				st.push(temp.child);
+				temp.child = null;
+			}
+		}
+
+		return dummy.next;
+    }
+
+}
