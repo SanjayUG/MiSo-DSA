@@ -1,0 +1,28 @@
+import java.util.* ;
+import java.io.*; 
+public class Solution 
+{
+  public static Queue<Integer> reverseElements(Queue<Integer> q, int k) 
+  {
+    if(q == null || k <= 0 || k > q.size()) {
+      return q;
+    }
+
+    Stack<Integer> st = new Stack<>();
+
+    for(int i=0; i<k; i++) {
+      st.add(q.poll());
+    }
+
+    while(!st.isEmpty()) {
+      q.add(st.pop());
+    }
+
+    int size = q.size();
+    for(int i=0; i<size-k; i++) {
+      q.add(q.poll());
+    }
+
+    return q;
+  }
+}
