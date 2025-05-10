@@ -1,3 +1,30 @@
+/*
+
+Problem statement:
+You have been given a singly Linked List of 'N' nodes with integer data and an integer 'K'.
+Your task is to remove the 'K'th node from the end of the given Linked List and return the head of the modified linked list.
+
+Example:
+Input : 1 -> 2 -> 3 -> 4 -> 'NULL'  and  'K' = 2
+Output: 1 -> 2 -> 4 -> 'NULL'
+Explanation:
+After removing the second node from the end, the linked list become 1 -> 2 -> 4 -> 'NULL'.
+
+Input format :
+The first line contains an integer 'N', the size of the linked list and an integer 'K'. 
+The second line contains 'N' space-separated integers.
+Output format :
+The output contains the linked list after deletion. If the list is empty, -1 is printed.
+Note :
+You do not need to print anything, it has already been taken care of. Just implement the given function.
+Follow Up:
+Can you solve this without finding the length of the linked list and using O(1) extra space?
+
+--------------------
+*/
+
+
+
 /****************************************************************
 
  Following is the class structure of the Node class:
