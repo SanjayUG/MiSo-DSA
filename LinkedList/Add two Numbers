@@ -1,3 +1,23 @@
+/*
+
+Problem statement:
+You are given two non-negative numbers 'num1' and 'num2' represented in the form of linked lists.
+The digits in the linked lists are stored in reverse order, i.e. starting from least significant digit (LSD) to the most significant digit (MSD), and each of their nodes contains a single digit.
+Calculate the sum of the two numbers and return the head of the sum list.
+
+Example :
+Input:
+'num1' : 1 -> 2 -> 3 -> NULL
+'num2' : 4 -> 5 -> 6 -> NULL
+
+Output: 5 -> 7 -> 9 -> NULL
+
+Explanation: 'num1' represents the number 321 and 'num2' represents 654. Their sum is 975.
+--------------------------------
+*/
+
+
+
 import java.util.* ;
 import java.io.*; 
 /****************************************************************
