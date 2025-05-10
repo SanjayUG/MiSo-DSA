@@ -1,3 +1,16 @@
+/*
+Problem statement:
+You have been given an integer Linked List.
+After every 'M' nodes, you have to take the sum of the next 'N' nodes and append that sum to the linked list. Do this till the end of the Linked List.
+
+Note:
+You just need to return the head of the new linked list.
+In case the linked list ends after adding K nodes, where K is any positive integer less than 'N'.Append the sum of those K nodes at the end of the linked list.
+
+---------------------------
+*/
+
+
 import java.util.* ;
 import java.io.*; 
 /****************************************************************
