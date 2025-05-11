@@ -1,3 +1,20 @@
+/*
+
+Problem statement
+Design a data structure that follows the concept of LRU i.e. Least Recently Used Cache.
+
+LRU Cache Class implementation :
+You are given a capacity ‘C’ for LRUCache(int capacity) which basically initializes the LRU cache with positive size capacity.
+
+Then you are given a ‘KEY’ for which the function int get(int key) returns the value of the key if the key exists, otherwise, return -1.
+
+You are given two integers ‘KEY’ and ‘VALUE’ for which the function void put(int key, int value) updates the value of the key if the key exists. Otherwise, add the key-value pair to the cache. If the number of keys exceeds the capacity from this operation, evict the least recently used key.
+
+--------------------------
+*/
+
+
+
 import java.util.*;
 
 public class LRUCache
