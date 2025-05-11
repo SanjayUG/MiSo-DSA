@@ -1,3 +1,15 @@
+/*
+Problem statement
+You are given an arbitrary linked list consisting of 'N' nodes having integer values. You need to perform insertion sort on the linked list and print the final list in sorted order.
+
+In other words, you are given a singly linked list, you need to perform insertion sort on it.
+
+Insertion Sort is a sorting algorithm that removes one element from the input data, finds the location it belongs within the sorted list and inserts it there. It repeats until no input elements remain.
+
+
+*/
+
+
 import java.util.* ;
 import java.io.*; 
 /****************************************************************
