@@ -1,3 +1,15 @@
+/*
+
+Problem statement
+You are given a Singly Linked List of integers. You need to reverse the Linked List by changing the links between nodes.
+
+Note :
+You do not need to print anything, just return the head of the reversed linked list. 
+
+*/
+
+
+
 import java.io.*;
 import java.util.* ;
 
