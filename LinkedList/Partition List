@@ -1,3 +1,18 @@
+/*
+
+Problem statement
+You are given a Singly Linked List of integers with a head pointer. Every node of the Linked List has a value written on it.
+
+A sample Linked List
+Now you have been given an integer value ‘K’. Your task is to rearrange this linked list such that the following conditions hold true :
+
+1. All nodes that have a value less than ‘K’ must come before the nodes that have a value greater than equal to ‘K’.
+2. All nodes must maintain the original relative order as they have present in the original linked list after rearrangement.
+
+*/
+
+
+
 /*****************************************************************
 
     Following is the class structure of the LinkedListNode class:
