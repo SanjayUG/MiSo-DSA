@@ -1,3 +1,19 @@
+/*
+Problem statement
+You are given a singly linked list of integers.
+Your task is to swap every two adjacent nodes, and return the head of the modified, linked list.
+
+For Example:
+We have a linked list 1->2->3->4->5->6->7 and so on. You are supposed to swap pairs of a linked list like swap (1,2), (3,4), (5,6), and so on.
+Note:
+1. You may not modify the data in the list’s nodes; only nodes themselves may be changed. Because imagine a case where a node contains many fields, so there will be too much unnecessary swap.
+2. If a pair of a node does not exist, then leave the node as it is.
+
+
+*/
+
+
+
 import java.util.* ;
 import java.io.*; 
 /****************************************************************
