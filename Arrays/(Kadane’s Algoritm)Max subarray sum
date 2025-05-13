@@ -1,3 +1,15 @@
+/*
+Problem statement
+Given an array of ‘N’ integers and ‘Q’ queries. The query is defined as below :-
+Given 2 integers ‘l’ and ‘r’ (‘l’ >= 0 and ‘r’ < N) find the maximum subarray sum between ‘l’ to ‘r’ (Inclusive).
+Query( ‘l’ ,’r’) = max(arr[i] + arr[i+1] +...arr[j].( i >= ‘l’ and j <= ‘r’)
+
+
+
+*/
+
+
+
 import java.util.* ;
 import java.io.*; 
 
