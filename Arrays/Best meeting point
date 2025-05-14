@@ -1,3 +1,14 @@
+/*
+Problem statement
+Ninja, along with his family, moved to a new city, and Ninja has no friends. He started making new friends from his school. Now he has a number of friends. His friends decided to meet in the evening, but all are confused about where to meet?
+Ninja is very busy doing some other works. Can you help Ninja find a place where Ninja and all his friends can meet such that the sum of distance traveled by Ninja and his friends is the minimum possible? Find the place and print the total sum of distances traveled by Ninja and his friends.
+You are given the location of Ninja and his friends in the form of a matrix. In the matrix, wherever the value is 1, it means that there is a home at that point (Ninja’s home or the home of some of his friends). Ninja and his friends can meet at any possible coordinate in the matrix, not necessarily at the home of any of the friends.
+Manhattan distance is used to calculate the distance between two points, i.e, distance(a, b) = |a.x - b.x| + |a.y - b.y|, (where a.x is the x coordinate of point ‘a’, a.y is the y coordinate of point ‘a’, b.x is the x coordinate of point ‘b’, b.y is the y coordinate of point ‘b’ respectively).
+
+*/
+
+
+
 import java.util.*;
 
 public class Solution {
