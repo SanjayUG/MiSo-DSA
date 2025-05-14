@@ -1,3 +1,28 @@
+/*
+
+
+Problem statement
+You are given an integer ‘N’ and an array ‘A’ of size ‘N’ containing positive integers.
+
+You have ‘N’ friends, and you want to give each of them some candies. The ‘ith’ friend will be happy if they receive at least ‘A[i]’ candies. You want to distribute candies among your friends to fulfill the following two conditions.
+
+No two friends have the same number of candies.
+
+Every friend is happy.
+
+Your task is to find the minimum candies required for distributing such that both conditions are met. If no distribution fulfills both given conditions, report it.
+
+Example :
+‘N’ = 5, ‘A’ = [3, 3, 2, 5, 1]
+If we distribute candies in the following manner [4, 3, 2, 5, 1],
+Each friend will be happy as they have at least received ‘A[i]’ candies, and no two friends got the same number of candies.
+Hence, the answer is (4 + 3 + 2 + 5 + 1) = 15. It’s guaranteed that this is the minimum number of candies required.
+
+
+*/
+
+
+
 import java.util.*;
 
 public class Solution {
