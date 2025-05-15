@@ -1,3 +1,15 @@
+/*
+Problem statement
+Given an array 'ARR'' of 'N' integers and an integer 'target', your task is to find three integers in 'ARR' such that the sum is closest to the target.
+
+Note
+In the case of two closest sums, print the smallest sum.
+
+
+*/
+
+
+
 import java.util.* ;
 import java.io.*; 
 public class Solution
