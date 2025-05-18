@@ -1,3 +1,27 @@
+/*
+
+Problem statement
+You are given a square matrix of non-negative integers of size 'N x N'. Your task is to rotate that array by 90 degrees in an anti-clockwise direction without using any extra space.
+
+For example:
+
+For given 2D array :
+
+    [    [ 1,  2,  3 ],
+         [ 4,  5,  6 ],
+         [ 7,  8,  9 ]  ]
+
+After 90 degree rotation in anti clockwise direction, it will become:
+
+    [   [ 3,  6,  9 ],
+        [ 2,  5,  8 ],
+        [ 1,  4,  7 ]   ]
+
+
+*/
+
+
+
 import java.util.* ;
 import java.io.*; 
 public class Solution {
