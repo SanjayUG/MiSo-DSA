@@ -1,3 +1,23 @@
+/*
+Problem statement
+You are the manager of a hotel having 10 floors numbered 0-9. Each floor has 26 rooms [A-Z]. You will be given a sequence of strings of the room where ‘+’ suggests the room is booked and ‘-’ suggests the room is freed. You have to find which room is booked the maximum number of times.
+
+Note:
+You may assume that the sequence is always correct, i.e., every booked room was previously free, and every freed room was previously booked.
+
+In case, 2 rooms have been booked the same number of times, you have to return Lexographically smaller room.
+
+A string 'a' is lexicographically smaller than a string 'b' (of the same length) if in the first position where 'a' and 'b' differ, string 'a' has a letter that appears earlier in the alphabet than the corresponding letter in string 'b'. For example, "abcd" is lexicographically smaller than "acbd" because the first position they differ in is at the second letter, and 'b' comes before 'c'.
+For Example :
+n = 6, Arr[] = {"+1A", "+3E", "-1A", "+4F", "+1A", "-3E"}
+
+Now in this example room “1A” was booked 2 times which is the maximum number of times any room was booked. Hence the answer is “1A”.
+
+
+*/
+
+
+
 import java.util.*;
 
 public class Solution {
