@@ -1,3 +1,15 @@
+/*
+Problem statement
+You are given ‘N’ integers in the form of an array ‘ARR’. Print the sorted array using the insertion sort.
+
+Note :
+No need to return anything. You should sort the array in-place.
+For example :
+Let ‘ARR’ be: [1, 4, 2]
+The sorted array will be: [1, 2, 4].
+
+*/
+
 import java.util.* ;
 import java.io.*; 
 
