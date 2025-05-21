@@ -1,14 +1,6 @@
 /*
 
 
-Problem statement
-Ram on his birthday ordered a cake which is in the shape of a histogram such that cake is divided into ‘N’ bars and each bar width equal to one. The height of each bar is known.
-Since it’s his birthday, so he wants to eat the maximum of the cake, but he can have the cake only once and in rectangle shape. Help him find the area of the largest rectangle in the cake.
-You will be given an array/list 'CAKE' of ‘N’ non-negative integers representing the cake's bar height where the width of each bar is one. You have to find the area of the largest rectangle in the cake.
-
-Example:
-For given array = {3,1,7,8,1,2}
-Above is the cake in the shape of a histogram where the width of each bar is 1, given array cake = {3,1,7,8,1,2}, the largest rectangle is shown with red outline having an area of 7 * 2 = 14 units.
 
 */
 
