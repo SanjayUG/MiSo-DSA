@@ -15,7 +15,7 @@ Expected Complexity: Try doing it in O(n) time complexity and O(1) space complex
 
 void pushZerosAtEnd(vector<int> &arr) 
 {
-	 int i=0;
+	 int i=0; //tracks the zero
 
     for(int j=0; j<arr.size(); j++){
 
