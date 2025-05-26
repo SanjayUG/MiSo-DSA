@@ -1,3 +1,17 @@
+/*
+Problem statement
+You are given an input string 'S'. Your task is to find and return all possible permutations of the input string.
+
+Note:
+1. The input string may contain the same characters, so there will also be the same permutations.
+
+2. The order of permutation does not matter.
+
+
+*/
+
+
+
 import java.util.* ;
 
 import java.io.*; 
