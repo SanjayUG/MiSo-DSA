@@ -1,3 +1,17 @@
+/*
+Problem statement
+You are given an array Arr consisting of N integers. Your task is to find all the unique permutations of the given array. For e.g if the array is {1, 1, 2}, the unique permutations of this array are {1, 1, 2}, {1, 2, 1}, {2, 1, 1}. Note that the total number of permutations of {1,1,2} is equal to 6 but out of those {1,1,2} and {1,2,1} occur twice.
+
+Note:
+1. There might be duplicates present in the array.
+2. The order of the permutations in the output does not matter.
+3. Do not use any kind of in-built library functions to find the answer.
+
+
+*/
+
+
+
 import java.util.* ; 
 
 public class Solution {    
