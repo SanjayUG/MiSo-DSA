@@ -1,3 +1,19 @@
+/*
+Problem statement
+You have been given a Binary Tree of 'N' nodes, where the nodes have integer values. Your task is to print the zigzag traversal of the given tree.
+
+Note:
+In zigzag order, level 1 is printed from left to right fashion, level 2 is printed from right to left. and level 3 is printed from left to right again, and so on…..
+For example:
+For the given binary tree
+
+The zigzag  traversal is [1, 4, 3, 5, 2, 7, 6]
+
+
+*/
+
+
+
 import java.util.*;
 /*
 class BinaryTreeNode<T> {
