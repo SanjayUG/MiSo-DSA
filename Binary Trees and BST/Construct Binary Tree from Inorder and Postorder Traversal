@@ -1,3 +1,23 @@
+/*
+Problem statement
+You are given arrays 'inOrder' and 'postOrder', which represent 'inorder' traversal and 'postorder' traversal of a 'Binary Tree' respectively.
+
+Construct a 'Binary Tree' represented by the given arrays and return it's head.
+
+Note:
+Assume that the Binary Tree contains only unique elements.
+
+Example:
+Input: 'inOrder' = [9, 3, 15, 20, 7], 'postOrder' = [9, 15, 7, 20, 3]
+
+Output:
+We get the following binary tree from Inorder and Postorder traversal:
+
+
+*/
+
+
+
 import java.util.*;
 
 /*******************************************************
