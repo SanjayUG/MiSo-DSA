@@ -1,3 +1,20 @@
+/*
+Problem statement
+You are given a Binary Tree.
+
+Return the length of the diameter of the tree.
+
+Note :
+The diameter of a binary tree is the length of the longest path between any two end nodes in a tree.
+
+The number of edges between two nodes represents the length of the path between them.
+Example :
+Input: Consider the given binary tree:
+
+*/
+
+
+
 /*************************************************************
 
  Following is the Binary Tree Node structure:
