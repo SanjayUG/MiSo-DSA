@@ -1,3 +1,20 @@
+/*
+Problem statement
+You have been given a Binary Tree of 'N' nodes where the nodes have integer values and three integers 'N1', 'N2', and 'N3'. Find the LCA(Lowest Common Ancestor) of the three nodes represented by the given three('N1', 'N2', 'N3') integer values in the Binary Tree.
+
+For example:
+For the given binary tree: the LCA of (7,8,10) is 1
+
+Note:
+All of the node values of the binary tree will be unique.
+
+N1, N2, and N3  will always exist in the binary tree.
+
+
+*/
+
+
+
 /**********************************************************
 	Following is the Binary Tree Node class.
 
