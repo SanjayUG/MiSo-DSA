@@ -1,3 +1,17 @@
+/*
+Problem statement
+You have been given a Binary Tree of distinct integers and two nodes ‘X’ and ‘Y’. You are supposed to return the LCA (Lowest Common Ancestor) of ‘X’ and ‘Y’.
+
+The LCA of ‘X’ and ‘Y’ in the binary tree is the shared ancestor of ‘X’ and ‘Y’ that is located farthest from the root.
+
+Note :
+You may assume that given ‘X’ and ‘Y’ definitely exist in the given binary tree.
+
+
+*/
+
+
+
 /************************************************************
 
  Following is the TreeNode class structure
