@@ -1,4 +1,18 @@
 /*
+Problem statement
+You have been given a Binary Tree of 'n' nodes, where the nodes have integer values. Your task is to return the In-Order traversal of the given binary tree.
+
+For example :
+For the given binary tree:
+
+The Inorder traversal will be [5, 3, 2, 1, 7, 4, 6].
+
+
+*/
+
+
+
+/*
     Following is the TreeNode class structure:
 
     public class TreeNode {
