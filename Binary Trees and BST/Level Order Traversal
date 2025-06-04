@@ -1,3 +1,16 @@
+/*
+Problem statement
+You have been given a Binary Tree of integers. You are supposed to return the level order traversal of the given tree.
+
+For example:
+For the given binary tree
+The level order traversal will be {1,2,3,4,5,6,7}.
+
+
+*/
+
+
+
 import java.util.* ;
 import java.io.*; 
 /*
