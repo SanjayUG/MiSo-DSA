@@ -1,3 +1,15 @@
+/*
+Problem statement:
+You have been given a binary tree of integers. You are supposed to find the left view of the binary tree. The left view of a binary tree is the set of all nodes that are visible when the binary tree is viewed from the left side.
+
+Example:
+The left view of the above binary tree is  {5, 7, 14, 25}.
+
+
+*/
+
+
+
 import java.util.*;
 
 // Define the TreeNode class
