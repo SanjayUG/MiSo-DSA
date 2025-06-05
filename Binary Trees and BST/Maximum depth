@@ -1,3 +1,16 @@
+/*
+Problem statement
+You are given the root node of a binary tree with N nodes, whose nodes have integer values. Your task is to find the maximum depth of the given Binary tree.
+Depth of a binary tree is the same as its height. In simpler terms, you have to find the total number of nodes encountered while moving from the root node to the farthest leaf node, along the longest path of the binary tree.
+
+Example:-
+If we are given the above binary tree as input then moving from root node(5) to the farthest leaf node(50), the path formed will be [ 5->10->25->35->40->45->50 ]. The total number of nodes encountered is 7, therefore the maximum depth of the binary tree is 7.
+
+
+*/
+
+
+
 import java.util.* ;
 import java.io.*; 
 /****************************************************
