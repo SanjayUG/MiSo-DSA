@@ -1,3 +1,16 @@
+/*
+Problem statement
+You have been given a Binary Search Tree of integers. You are supposed to return the k-th (1-indexed) smallest element in the tree.
+
+For example:
+For the given binary search tree and k = 3
+The 3rd smallest node is highlighted in yellow colour.   
+
+
+*/
+
+
+
 /*********************************************************
 
  Following is the TreeNode structure:
