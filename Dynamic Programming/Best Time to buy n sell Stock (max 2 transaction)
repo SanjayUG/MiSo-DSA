@@ -1,3 +1,21 @@
+/*
+Problem statement
+You have been given an array 'PRICES' consisting of 'N' integers where PRICES[i] denotes the price of a given stock on the i-th day. You are also given an integer 'K' denoting the number of possible transactions you can make.
+Your task is to find the maximum profit in at most K transactions. A valid transaction involves buying a stock and then selling it.
+
+Note
+You can’t engage in multiple transactions simultaneously, i.e. you must sell the stock before rebuying it.
+For Example
+Input: N = 6 , PRICES = [3, 2, 6, 5, 0, 3] and K = 2.
+Output: 7
+
+Explanation : The optimal way to get maximum profit is to buy the stock on day 2(price = 2) and sell it on day 3(price = 6) and rebuy it on day 5(price = 0) and sell it on day 6(price = 3). The maximum profit will be (6 - 2) + (3 - 0) = 7.
+
+
+*/
+
+
+
 public class Solution {
     public static int maxProfit(int []prices) {
         int buy1 = Integer.MAX_VALUE;
