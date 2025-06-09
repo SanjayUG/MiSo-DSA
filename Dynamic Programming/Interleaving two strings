@@ -1,3 +1,21 @@
+/*
+Problem statement
+You are given three strings 'A', 'B' and 'C'. Check whether 'C' is formed by an interleaving of 'A' and 'B'.
+
+'C' is said to be interleaving 'A' and 'B', if the length of 'C' is equal to the sum of the length of 'A' and length of 'B', all the characters of 'A' and 'B' are present in 'C' and the order of all these characters remains the same in all three strings.
+
+For Example:
+If A = “aab”, 'B' = “abc”, 'C' = “aaabbc”
+Here 'C' is an interleaving string of 'A' and 'B'. because 'C' contains all the characters of 'A' and 'B' and the order of all these characters is also the same in all three strings.
+
+If 'A' = “abc”, 'B' = “def”, 'C' = “abcdefg”
+Here 'C' is not an interleaving string of 'A' and 'B'. 'B'ecause neither A nor 'B' contains the character ‘g’.
+
+
+*/
+
+
+
 import java.util.*;
 
 public class Solution {
