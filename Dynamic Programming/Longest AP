@@ -1,3 +1,18 @@
+/*
+Problem statement
+You are given an array ‘ARR’ of size ‘N’. Your task is to find a subsequence ‘S’ of ‘ARR’ such that the following conditions hold true:
+• ‘S’ must be in arithmetic progression.
+• The length of ‘S’ must be the maximum possible.
+
+Return the maximum possible length of 'S'.
+
+Example -
+ARR = [2,8,4,13,6] The longest subsequence that is possible here is [2,4,6] which has length '3'.
+
+*/
+
+
+
 import java.util.*;
 import java.io.*;
 
