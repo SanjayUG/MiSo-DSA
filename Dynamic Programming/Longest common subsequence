@@ -1,3 +1,13 @@
+/*
+Problem statement
+You have been given two Strings “STR1” and “STR2” of characters. Your task is to find the length of the longest common subsequence.
+
+A String ‘a’ is a subsequence of a String ‘b’ if ‘a’ can be obtained from ‘b’ by deletion of several (possibly, zero or all) characters. A common subsequence of two Strings is a subsequence that is common to both Strings.
+
+
+*/
+
+
 
 public class Solution {
 
