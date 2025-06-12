@@ -1,3 +1,25 @@
+/*
+
+Problem statement
+You have been given a square chessboard of size ‘N x N’. The position coordinates of the Knight and the position coordinates of the target are also given.
+
+Your task is to find out the minimum steps a Knight will take to reach the target position.
+
+Example:
+knightPosition: {3,4}
+targetPosition: {2,1}
+
+The knight can move from position (3,4) to positions (1,3), (2,2) and (4,2). Position (4,2) is selected and the ‘stepCount’ becomes 1. From position (4,2), the knight can directly jump to the position (2,1) which is the target point and ‘stepCount’ becomes 2 which is the final answer. 
+Note:
+1. The coordinates are 1 indexed. So, the bottom left square is (1,1) and the top right square is (N, N).
+2. The knight can make 8 possible moves as given in figure 1.
+3. A Knight moves 2 squares in one direction and 1 square in the perpendicular direction (or vice-versa).
+
+
+*/
+
+
+
 import java.util.*;
 
 // class Pair {
