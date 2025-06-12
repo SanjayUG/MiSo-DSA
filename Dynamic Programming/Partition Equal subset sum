@@ -1,3 +1,17 @@
+/*
+Problem statement
+You are given an array 'ARR' of 'N' positive integers. Your task is to find if we can partition the given array into two subsets such that the sum of elements in both subsets is equal.
+
+For example, let’s say the given array is [2, 3, 3, 3, 4, 5], then the array can be partitioned as [2, 3, 5], and [3, 3, 4] with equal sum 10.
+
+Follow Up:
+Can you solve this using not more than O(S) extra space, where S is the sum of all elements of the given array?
+
+
+*/
+
+
+
 public class Solution {
 	public static boolean canPartition(int[] arr, int n) {
         int totalSum = 0;
