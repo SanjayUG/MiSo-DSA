@@ -1,3 +1,21 @@
+/*
+Problem statement
+Given an input string 'S' and a pattern 'P', implement a regular expression matching with the support of two special characters ‘.’ (dot) and ‘*’(asterisk) where
+
+1. ‘.’ matches to any single character.
+2. ‘*’ matches to zero or more of the preceding element.
+If the input string 'S' matches the pattern 'P', then return true else, return false.
+
+Note:
+1. You have to match the entire string with the pattern given.
+2. Both the strings, 'S' and 'P' contain only lower-case alphabets.
+3. Only the pattern will contain additional characters ‘*’ and ‘.’ along with alphabets.
+
+
+*/
+
+
+
 import java.util.*;
 public class Solution 
 {
