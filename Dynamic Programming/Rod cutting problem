@@ -1,3 +1,19 @@
+/*
+Problem statement
+Given a rod of length ‘N’ units. The rod can be cut into different sizes and each size has a cost associated with it. Determine the maximum cost obtained by cutting the rod and selling its pieces.
+
+Note:
+1. The sizes will range from 1 to ‘N’ and will be integers.
+
+2. The sum of the pieces cut should be equal to ‘N’.
+
+3. Consider 1-based indexing.
+ 
+
+*/
+
+
+
 public class Solution {
 	public static int cutRod(int price[], int n) {
 		int dp[] = new int[n + 1];
