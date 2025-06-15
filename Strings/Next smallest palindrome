@@ -1,3 +1,36 @@
+
+/*
+--
+- convert to StringBuilder
+- inti bool to false, int carry
+- travelse for len+1/2 to len
+	check if i th char is less than len-i-1 th char
+		setCharAt i to len - i - 1.
+		travelse from i to len{
+			set j to len - j - 1.
+		}
+		change bool to true
+		break;
+	else break.
+
+- if bool then return s.toString()
+- set carry to 1
+- travsal from len-1/2 to len {
+	take sum and add carry to it
+	check if sum = 10 {
+		set i to 0, and carry = 1;
+	} else {
+		set i to sum and carry = 0 and break;
+	}
+}
+
+- if carry is 1 then insert 1 to 0th postion
+- travsal len+1/2 to len {
+	set i to len-i-1
+}
+- return sb.toString();
+--
+*/
 import java.util.* ;
 import java.io.*; 
 public class Solution {
