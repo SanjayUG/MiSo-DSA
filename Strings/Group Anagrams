@@ -1,3 +1,22 @@
+
+/*
+--
+- create a map of str-List<str>
+- iterate to inputStr.
+    convert str -> toCharArray()
+    Arrays.sort() it
+    convert back to str[String.valueOf()]
+    if sortedStr dont exist in map {
+        put it(sortedStr, str)
+    }
+    map.get(sortedStr).add(str);
+
+- convert to map to arrlist<arrlist<>>() by map.values()
+- return the arrlist<arrlist<>>;
+
+--
+*/
+
 import java.util.*;
 import java.io.*;
 
