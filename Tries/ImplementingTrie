@@ -1,3 +1,26 @@
+/*
+Problem statement
+Implement Trie Data Structure to support these operations:
+
+insert(word) - To insert a string "word" in Trie
+search(word) - To check if string "word" is present in Trie or not.
+startsWith(word) - To check if there is any string in the Trie that starts with the given prefix string "word".
+
+
+Three type of queries denote these operations:
+
+Type 1: To insert a string "word" in Trie.
+1 word
+
+Type 2: To check if the string "word" is present in Trie or not.
+2 word
+
+Type 3: To check if there is any string in the Trie that starts with the given prefix string "word".
+3 word
+
+*/
+
+
 public class Trie {
     public static class Node {
         Node next[] = new Node[26];
