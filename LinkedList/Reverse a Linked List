@@ -8,7 +8,21 @@ You do not need to print anything, just return the head of the reversed linked l
 
 */
 
+/*
+--
 
+- take prev and init to null
+- take curr and init to head
+- while curr is not null {
+	take next and init to curr.next
+	point curr.next to prev
+	move prev to curr
+	move curr to next
+}
+- return prev
+
+--
+*/
 
 import java.io.*;
 import java.util.* ;
