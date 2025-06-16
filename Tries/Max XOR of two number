@@ -1,3 +1,21 @@
+/*
+
+Problem statement
+An array ‘A’ of ‘N’ integers is provided. Return the maximum possible number which can be created by taking bitwise XOR of any 2 integers of the array.
+
+Example:
+If the array is 2,5 and 6
+
+2 XOR 5 is 7
+2 XOR 6 is 4
+5 XOR 6 is 3
+
+Hence the answer is 7.
+
+*/
+
+
+
 public class Solution {
     public static int maximumXor(int []A) {
         int maxi = 0;
