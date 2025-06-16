@@ -12,6 +12,16 @@ Note:
 
 */
 
+/*
+--
+
+- take a dummy and connect to head
+- start from dummy and point a new node temp.
+- take prev and curr, and point them to temp.next and temp.next.next
+- point temp to curr and update temp to prev.
+
+--
+*/
 
 
 import java.util.* ;
