@@ -1,3 +1,24 @@
+/*
+Problem statement
+You have to implement the pop function of Max Priority Queue and implement using a heap.
+
+Functions :
+a) push(int x) : 'x' has to be inserted in the priority queue. This has been implemented already
+b) pop() : return the maximum element in the priority queue, if priority queue is empty then return '-1'.
+
+Example:
+We perform the following operations on an empty priority queue:
+When operation push(5) is performed, we insert 1 in the priority queue.
+When operation push(2) is performed, we insert 2 in the priority queue. 
+When operation pop() is performed, we remove the maximum element from the priority queue and print which is 5.
+When operation push(3) is performed, we insert 1 in the priority queue.
+When operation pop() is performed, we remove the maximum element from the priority queue and print which is 3.
+
+
+*/
+
+
+
 import java.util.List;
 public class Solution {
     public static int pop(List<Integer> heap) {
