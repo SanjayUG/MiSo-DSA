@@ -1,3 +1,12 @@
+/*
+Problem statement
+Given an array of integers, find the Kth largest sum subarray For example, given the array [1, -2, 3, -4, 5] and K = 2, the 2nd largest sum subarray would be [3, -4, 5], which has a sum of 4.
+
+Please note that a subarray is the sequence of consecutive elements of the array.
+
+
+*/
+
 import java.util.*;
 public class Solution {
 
