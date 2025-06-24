@@ -1,3 +1,18 @@
+/*
+Problem statement
+You are given an array consisting of N non-negative integers, and an integer K denoting the length of a subarray, your task is to determine the maximum elements for each subarray of size K.
+
+Note:
+A subarray is a contiguous subset of an array.
+The array may contain duplicate elements.
+The given array follows 0-based indexing.
+It is guaranteed that there exists at least one subarray of size K.
+
+
+*/
+
+
+
 #include <bits/stdc++.h>
 
 
