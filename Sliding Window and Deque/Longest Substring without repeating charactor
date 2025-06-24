@@ -1,3 +1,15 @@
+/*
+Problem statement
+Given a string 'S' of length 'L', return the length of the longest substring without repeating characters.
+
+Example:
+Suppose given input is "abacb", then the length of the longest substring without repeating characters will be 3 ("acb").
+
+
+*/
+
+
+
 import java.util.* ;
 import java.io.*; 
 public class Solution 
