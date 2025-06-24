@@ -35,3 +35,29 @@ public class Solution
 		return maxCount;
 	}
 }
+
+
+// --------------------------
+
+
+public static int uniqueSubstrings(String input) {
+    int n = input.length();
+    if (n <= 1) return n;
+    
+    // For strings known to contain only lowercase letters a-z
+    int[] lastIndex = new int[26];
+    Arrays.fill(lastIndex, -1);
+    
+    int maxLen = 0;
+    int left = 0;
+    
+    for (int right = 0; right < n; right++) {
+        char c = input.charAt(right);
+        int idx = c - 'a';
+        left = Math.max(left, lastIndex[idx] + 1);
+        maxLen = Math.max(maxLen, right - left + 1);
+        lastIndex[idx] = right;
+    }
+    
+    return maxLen;
+}
