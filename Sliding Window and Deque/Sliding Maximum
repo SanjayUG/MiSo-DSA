@@ -1,3 +1,12 @@
+/*
+The problem of finding the maximum sum of a subarray of size K is a common coding challenge. The task is to find the maximum sum of any contiguous subarray of length K in a given array of integers.
+
+For example, given an array arr[] = [100, 200, 300, 400] and k = 2, the maximum sum would be 700, which is the sum of the subarray [300, 400].
+
+*/
+
+
+
 import java.util.*;
 
 public class Solution {
