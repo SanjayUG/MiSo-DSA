@@ -1,3 +1,21 @@
+/*
+You are given an integer 'N', your task is to generate all combinations of well-formed parenthesis having ‘N’ pairs.
+A parenthesis is called well-formed if it is balanced i.e. each left parenthesis has a matching right parenthesis and the matched pairs are well nested.
+
+For Example:
+For ‘N’ = 3,
+All possible combinations are: 
+((()))
+(()())
+(())()
+()(())
+()()()
+
+
+*/
+
+
+
 import java.util.*; 
 import java.io.*;
 
