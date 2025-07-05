@@ -1,3 +1,17 @@
+/*
+Problem statement
+You are given a directed graph having ‘N’ nodes. A matrix ‘EDGES’ of size M x 2 is given which represents the ‘M’ edges such that there is an edge directed from node EDGES[i][0] to node EDGES[i][1].
+
+Find whether the graph contains a cycle or not, return true if a cycle is present in the given directed graph else return false.
+
+For Example :
+In the following directed graph has a cycle i.e. B->C->E->D->B.
+
+
+*/
+
+
+
 import java.util.*;
 public class Solution {
   public static boolean detectCycleInDirectedGraph(int n, ArrayList < ArrayList < Integer >> edges) {
